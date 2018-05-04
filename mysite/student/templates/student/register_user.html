@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create An Account </title>
+</head>
+<body>
+  <h2>Enter the following details</h2>
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token  %}
+         {% include 'student/form-template.html' %}
+         <div>
+             <div>
+                 <button type="submit">Submit</button>
+             </div>
+         </div>
+    </form>
+
+</body>
+</html>

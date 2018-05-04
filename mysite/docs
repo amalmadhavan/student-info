@@ -1,0 +1,5 @@
+if default values for id in marklist arises first comment
+the entire model so that django thinks that the model is deleted
+run migrations and migrate and after the changes have been made
+change the field to be made as primary key and then uncomment the model
+and perform migrations and migrate. this will help

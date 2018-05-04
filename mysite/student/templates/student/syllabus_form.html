@@ -1,0 +1,23 @@
+  <!--the name of this html file is given as the format { <modelname>_form.html }-->
+    <!--<modelname> should be in lowercase-->
+      <!--eg: Student  then the form.html filename is student_form.html-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Syllabus</title>
+</head>
+<body>
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token  %}
+         {% include 'student/form-template.html' %}
+         <div>
+             <div>
+                 <button type="submit">Submit</button>
+             </div>
+         </div>
+    </form>
+
+</body>
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Student Academic Information System</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+        {% load staticfiles %}
+		<link rel="stylesheet" href="{% static 'student/assets/css/main.css' %}" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+	</head>
+	<body>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+				<div id="main">
+					<div class="inner">
+						<header id="header">
+						<div class="12u 12u$(small)" >
+							<a href="cusat.ac.in" class="logo" style="padding-top:10px;font-size:30px;"><strong>CUSAT</strong></a> <weak style="font-size:40px;float:right"> School of Engineering</weak></a></br>
+							<ul class="icons">
+								<div class="box alt">
+									<div class="row 50% uniform">
+
+                                        {% load staticfiles %}
+										<div class="3u$"><span class="image Small" style="float:left" ><img src="{%  static 'student/images/pic01.jpg'%}" /></span></div>
+									</div>
+									<div class="u u$(small)">
+                                        {% if user.is_authenticated %}
+                                              <p3 style="float:=right"><h3>Hello {{ request.user.username }}
+
+                                        {% endif %}
+
+  </h3></p3>
+								</div>
+								</div>
+    					</div>
+						</header>
+					</div>
+					<!--Body-->
+					<section>
+						<h3><strong><b><p>Please make sure the information about syllabus and subjects are correct, to avoid errors.</p>
+<p>In subjects page, make sure every subject has been assigned a subject-type eg. theory,practical etc.</p>
+<p>When adding Lateral entry student: if a LET student joins 2007 batch his/her 'year of admission' should be given as '2007', and not the actual year of admission.</p>
+</b></strong></h3>
+					</section>
+				</div>
+				<!-- Sidebar -->
+					<div id="sidebar">
+						<div class="inner">
+							<!-- Menu -->
+								<nav id="menu">
+									<header class="major">
+										<h2>Menu</h2>
+									</header>
+									<ul>
+										<li><a href="{% url 'student:home' %}">Home</a></li>
+                                        {% if user.username == 'admin' %}
+                                        <li><a href="/admin">Admin</a> </li>
+                                        {% endif %}
+										<li>
+											<span class="opener">Student</span>
+											<ul>
+												<li>
+													<span class="opener"><b>IndexCard</b></span>
+													<ul>
+														<li><a href="{% url 'student:student_add' %}">Add </a></li>
+														<li><a href="{% url 'student:student_search' %}">Edit/View</a></li>
+
+													</ul>
+												</li>
+												<li>
+													<span class="opener"><b>Marklist</b></span>
+													<ul>
+														<li><a href="{% url 'student:marklist_add' %}">Add </a></li>
+														<li><a href="{% url 'student:student_search' %}">Edit/View</a></li>
+
+													</ul>
+												</li>
+												<li><a href="#"><b>Attendance</b></a></li>
+												<li><a href="#"><b>ReportCard</b></a></li>
+											</ul>
+										</li>
+
+										<li>
+												<span class="opener">Syllabus</span>
+												<ul>
+													<li>
+														<span class="opener"><b>SyllabusProfile</b></span>
+														<ul>
+															<li><a href="{% url 'student:syllabus_add' %}">Add </a></li>
+															<li><a href="">Edit/View</a></li>
+
+														</ul>
+													</li>
+													<li><a href="#"><b>Assign Syllabus</b></a></li>
+													<li><a href="#"><b>Subjects</b></a></li>
+												</ul>
+											</li>
+
+										<li>
+											<span class="opener">Faculty</span>
+											<ul>
+												<li>
+													<span class="opener"><b>Faculty Profile</b></span>
+													<ul>
+														<li><a href="{% url 'student:faculty_add' %}">Add </a></li>
+														<li><a href="{% url 'student:faculty_search' %}">Edit/View</a></li>
+													</ul>
+												</li>
+												<li>
+													<span class="opener"><b>Faculty Subject Map</b></span>
+													<ul>
+														<li><a href="{% url 'student:faculty_addsubmap' %}">Add </a></li>
+														<li><a href="">Edit/View</a></li>
+													</ul>
+												</li>
+												<li><a href="#"><b>Assign HoD</b></a></li>
+{#                                                <li><a href=""> Login </a> <#}
+											</ul>
+										</li>
+                                        {% if user.is_authenticated == False %}
+                                        <li><a href="{% url 'student:login' %}">Login</a></li>
+                                        {% endif %}
+                                        {% block content %}
+                                        {% if user.is_authenticated %}
+{#                                             {% print(user.is_authenticated) %}#}
+                                            <li><a href="{% url 'logout' %}">Logout</a></li>
+                                        {% endif %}
+                                    {% endblock %}
+                                    </ul>
+								</nav>
+
+							<!-- Section -->
+								<section>
+									<header class="major">
+										<h2>Get in touch</h2>
+									</header>
+									<p>School of Engineering PTA</p>
+									<ul class="contact">
+										<li class="fa-envelope-o"><a href="#">principal_soe@cusat.ac.in</a></li>
+										<li class="fa-phone">0484-2556187</li>
+										<li class="fa-home">School of Engineering, CUSAT<br />
+										Thrikkakara, Kochi-21</li>
+									</ul>
+								</section>
+						</div>
+					</div>
+				</div>
+					<!-- Footer -->
+ 					 <footer id="footer">
+						  <p class="copyright" style="float:center"> &nbsp&nbsp&nbsp&nbsp&nbsp <i> &copy; 2018. Div of Computer Science,School of Engieering,CUSAT. All rights reserved.</i> </p>
+ 					 </footer>
+
+			</div>
+
+			</div>
+
+		<!-- Scripts -->
+        {% load staticfiles %}
+        <script src="{% static 'student/assets/js/jquery.min.js' %}"></script>
+        <script src="{% static 'student/assets/js/skel.min.js' %}"></script>
+        <script src="{% static 'student/assets/js/util.js' %}"></script>
+        <script src="{% static 'student/assets/js/main.js' %}"></script>
+
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/skel.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+		<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

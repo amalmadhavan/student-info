@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Account Created</title>
+</head>
+
+<body>
+  {% csrf_token %}
+  <h1>Account Created Successfully !!!</h1>
+  <h3>Welcome user {{ list.username }} and email {{ list.email }} with access level {{ list.accesslvl }}</h3>
+  <a class="navbar-brand" href="{% url 'student:index' %}"/>Home </a>
+</body>
+</html>
