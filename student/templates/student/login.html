@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome To Student Academic Information System</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+    <!--[if lte IE 8]>
+    <script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'student/assets/css/main.css' %}"/>
+
+    <link rel="stylesheet" href="main.css"/>
+    <!--[if lte IE 9]>
+    <link rel="stylesheet" href="assets/css/ie9.css"/><![endif]-->
+    <!--[if lte IE 8]>
+    <link rel="stylesheet" href="assets/css/ie8.css"/><![endif]-->
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+
+
+</head>
+<body style="background-color:#F0F0F0">
+<div class="container">
+
+    {%load static %}
+
+    <div class="align-center pt-5">
+        <img src="{%  static 'student/images/pic01.jpg'%}"/>
+        <!--<img style="margin-left:580px;margin-top:100px;display:block;" src="{%  static 'student/images/pic01.jpg'%}" />-->
+        <h2>Welcome to Student Academic Information System</h2>
+
+        <!--<h2 style="font-family:Arial;text-align:center;margin-top:10px">Welcome to Student Academic Information System</h2>-->
+        <!--<h2 style="font-family:Arial;text-align:center;">School Of Engineering, CUSAT </h2>-->
+
+        <h2>School Of Engineering, CUSAT </h2>
+        <span class="text-danger small">{{error}}</span>
+        <span class="text-danger small">{{perm_error}}</span>
+    </div>
+    <form class="form-vertical" action="/student/login_user/" method="POST">
+        {% csrf_token %}
+        <div class="container container-fluid w-100 pt-2">
+            <div class="row  row-fluid justify-content-center mt-4">
+                <div class="col-sm-1  align-items-end mr-4">
+                    <label class="control-label" style="font-size: medium;font-family:Arial;">
+                        Username
+                    </label>
+                </div>
+                <div class="col-sm-3 ">
+                    <input class="form-control" type="text" name="username" required/>
+                </div>
+            </div>
+            <div class="row  row-fluid  justify-content-center mt-3">
+                <div class="col-sm-1  align-items-end mr-4">
+                    <label class="control-label" style="font-size: medium;font-family:Arial">
+                        Password
+                    </label>
+                </div>
+                <div class="col-sm-3">
+                    <input class="form-control" type="password" name="password" required/>
+                </div>
+            </div>
+            <div class="row  row-fluid justify-content-center mt-4">
+                <div class="align-center">
+                    <input type="submit" class="btn btn-outline-danger" value="Login">
+                </div>
+            </div>
+    </form>
+
+
+</div>
+
+
+
+
+</div>
+
+</body>
+</html>

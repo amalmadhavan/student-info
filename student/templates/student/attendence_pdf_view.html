@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+<div style="text-align:center">
+    <h2> {{branch}} Division</h2>
+    <h2> School Of Engineering </h2>
+    <h2>Cochin University of Science And Technology</h2>
+    <h2> S{{cursem}} {{year}}-{{end_year}} Admission </h2>
+    <h2>{{section}} batch</h2>
+    <h2>Attendence list for {{subcode}}</h2>
+    <h3>{{subcode}}</h3>
+
+</div>
+ <div class="table-responsive" style="margin-left:80px">
+                <table id="tables" class="table"
+                       cellspacing="0" width="80%" style="border-left-style:200px;border-right:2px;border-top:2px:border-bottom:2px;
+                        border:solid black;">
+                       <!--border="1|0 solid black"-->
+
+                    <tr style="border-left-style:20px;">
+                        <th style="border-left-style:20px;">
+                            <label style="font-size: medium;font-family:Arial;">Roll No </label>
+                        </th>
+
+                        <th>
+                            <label style="font-size: medium;font-family:Arial"> Student Name </label>
+                        </th>
+
+                        <th>
+                            <label style="font-size: medium;font-family:Arial"> 1st hour</label>
+                        </th>
+
+                          <th>
+                            <label style="font-size: medium;font-family:Arial"> 2nd hour</label>
+                        </th>
+
+                          <th>
+                            <label style="font-size: medium;font-family:Arial"> 3rd hour</label>
+                        </th>
+
+                          <th>
+                            <label style="font-size: medium;font-family:Arial"> 4th hour</label>
+                        </th>
+
+                          <th>
+                            <label style="font-size: medium;font-family:Arial"> 5th hour</label>
+                        </th>
+
+                          <th>
+                            <label style="font-size: medium;font-family:Arial"> 6th hour</label>
+                        </th>
+                        
+                        <th>
+                            <label style="font-size: medium;font-family:Arial">Total Hrs Present</label>
+                        </th>
+
+                        <th>
+                            <label style="font-size: medium;font-family:Arial">Total Hrs Absent</label>
+                        </th>
+
+
+
+
+
+                        
+                        
+                        
+                        
+                        
+                        
+
+                    </tr>
+
+                    {%for i in list%}
+
+                     <tr>
+                        <th>
+                            <label style="font-size: medium;font-family:Arial">{{i.rollno}} </label>
+                        </th>
+
+                        <th>
+                            <label style="font-size: medium;font-family:Arial">{{i.name}} </label>
+                        </th>
+
+                        <th>
+                            <label style="font-size: medium;font-family:Arial">{{i.firsthr}}</label>
+                        </th>
+
+                        <th>
+                            <label style="font-size: medium;font-family:Arial">{{i.secondhr}}</label>
+                        </th>
+
+                         <th>
+                            <label style="font-size: medium;font-family:Arial">{{i.thirdhr}}</label>
+                        </th>
+
+                         <th>
+                            <label style="font-size: medium;font-family:Arial">{{i.fourthhr}}</label>
+                        </th>
+
+                         <th>
+                            <label style="font-size: medium;font-family:Arial">{{i.fifthhr}}</label>
+                        </th>
+
+                         <th>
+                            <label style="font-size: medium;font-family:Arial">{{i.sixthhr}}</label>
+                        </th>
+
+                          <th>
+                            <label style="font-size: medium;font-family:Arial">{{i.ptotal}}</label>
+                        </th>
+
+                          <th>
+                            <label style="font-size: medium;font-family:Arial">{{i.atotal}}</label>
+                        </th>
+
+
+
+
+
+
+
+
+                    </tr>
+                    {%endfor%}
+
+                </table>
+                <h3>P - Present</h3>
+                    <h3>N - Null </h3>
+                    <h3>A - Absent</h3>
+                {% load staticfiles %}
+                <script src="{% static 'student/js/jquery-3.3.1.min.js' %}"></script>
+                <script src="{% static 'student/assets/js/skel.min.js' %}"></script>
+                <script src="{% static 'student/assets/js/util.js' %}"></script>
+                <script src="{% static 'student/assets/js/main.js' %}"></script>
+
+            </div>
+</body>
+</html>

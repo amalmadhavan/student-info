@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search for Students</title>
+</head>
+<body>
+   <h1>Search for students by register number</h1>
+
+   <form action="/student/search/" method="get">
+       {% csrf_token %}
+       <input type="text" name="regno" placeholder="Register Number"><br>
+        <input type="text" name="name" placeholder="Student Name">
+        <!--<input type="text" name="branch" placeholder="Branch">-->
+         <select name="branch">
+             <option value="CS">Computer Science And Engineering</option>
+              <option value="IT">Information Technology</option>
+              <option value="EEE">Electrical & Electronics Engineering</option>
+              <option value="EC">Electronics & Communication</option>
+              <option value="SF">Safety & Fire Engineering</option>
+              <option value="Civil Engineering">Civil Engineering</option>
+              <option value="ME">Mechanical Engineering</option>
+         </select>
+       <input type="submit" value="Search">
+   </form>
+</body>
+</html>

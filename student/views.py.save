@@ -1,0 +1,751 @@
+from django.views import generic
+
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+
+from django.shortcuts import render, get_list_or_404, get_object_or_404
+
+from django.urls import reverse_lazy
+
+from django.contrib import messages
+from django.http import HttpResponse
+
+from .models import Subject_Profile, FacultySubject, Student, Faculty, Marklist
+from django.contrib.auth.models import User
+# for user forms (4 imports)
+from django.contrib.auth import authenticate, login
+from django.shortcuts import render, redirect
+from django.views.generic import View
+from .forms import Userform
+
+from tablib import Dataset
+from .resources import StudentResource
+
+from django.contrib.auth.decorators import login_required, user_passes_test  # for custom views only
+
+from django.utils.decorators import method_decorator  # for CBV
+
+from .forms import StudentCsvForm
+from django.http import HttpResponseRedirect
+from django.urls import reverse
+from django.contrib import messages
+import logging
+
+from io import BytesIO
+from reportlab.pdfgen import canvas
+from django.http import HttpResponse
+
+from .models import CustomUser
+
+from django.core.mail import send_mail
+from django.conf import settings
+
+import logging
+
+logging.config.dictConfig({
+
+   'version':1,
+   'disable_existing_loggers':False,
+   'formatters' : {
+          'console': {
+                'format' : '%(name)-12s %(levelname)-8s %(message)s'
+           },
+           'debug_file': {
+                'format' : '%(asctime)s %(name)-12s %(levelname)-8s %(message)s'
+
+           }
+    },
+
+    'handlers': {
+      'console': {
+           'class' : 'logging.StreamHandler',
+           'formatter' : 'console'
+
+       },
+       'debug_file': {
+           'level' : 'DEBUG',
+           'class' : 'logging.FileHandler',
+           'formatter' : 'debug_file',
+           'filename' : '/home/csadmin/waise2/env/logs/django_debug.log'  
+       },
+
+       'error_file' : {
+           'level' : 'ERROR',
+           'class' : 'logging.FileHandler',
+           'formatter' : 'debug_file',
+           'filename' : '/home/csadmin/waise2/env/logs/django_debug.log'
+  
+       },
+   },
+
+   'loggers': {
+             '':    {
+                  'level' : 'DEBUG',
+                  'handlers' : ['debug_file',]
+              },
+           
+            'a' :  {
+                   'level' : 'ERROR',
+                   'handlers' : ['error_file',]
+               }
+       }
+})
+
+logger= logging.getLogger(__name__)
+
+# import PySMS
+#
+# def sms(request):
+#
+#     ps=PySMS.PySMS(address="",password="",smtp_server="",smtp_port="",ssl=True)
+#
+#     ps.add_number(number="")
+#
+#     ps.text("Welcome to Waise ");
+# from .models import Attendence
+
+
+def attendence_calc(request, regno, section, cursem, id):
+    # def attendence_list_pdf(request):/
+    logger.info('URL %s calls attendence_calc ',request.get_full_path())
+    logger.info('username %s ' , request.user.username)
+    if request.method == 'GET':
+        branch = request.user.dept
+
+        cursem = cursem
+        section = section
+        # facultyid = facultyid
+        # subcode = request.GET['subcode']
+
+        list = RollnoRegnoMap.objects.filter(branch=branch, cursem=cursem, section=section, id=id).order_by('regno', )
+
+        names = [];
+
+        for student in list:
+            names.append(student.name)
+
+        print("naems are ", names)
+        print("list ", list)
+        list2 = [];
+
+        # list2 = RollnoRegnoMap.objects.filter(bra)
+        # print("len list ", len(list))
+        # print("zxzx1 ",list[0].name)
+        # print("zczcszxzx1 ", list[1].name)
+        total = [];
+        present_total = [];
+        absent_total = [];
+        ptotal = 0;
+        atotal = 0;
+        prev_atotal = 0;
+        prev_ptotal = 0;
+        prev_name = "";
+
+        # student.ptotal=0;
+        for student in list:
+            if student.atotal == -1:
+                atotal = 0
+
+            if student.ptotal == -1:
+                ptotal = 0
+
+            if prev_name == student.name:
+                atotal = prev_atotal;
+                ptotal = prev_ptotal;
+            else:
+                atotal = 0;
+                ptotal = 0;
+
+            if student.firsthr == "P":
+                ptotal = ptotal + 1
+                # present_total.append(ptotal)
+
+            if student.secondhr == "P":
+                ptotal = ptotal + 1
+                # present_total.append(ptotal)
+
+            if student.thirdhr == "P":
+                ptotal = ptotal + 1
+                # present_total.append(ptotal)
+
+            if student.fourthhr == "P":
+                ptotal = ptotal + 1
+                # present_total.append(ptotal)
+
+            if student.fifthhr == "P":
+                ptotal = ptotal + 1
+                # present_total.append(ptotal)
+
+            if student.sixthhr == "P":
+                ptotal = ptotal + 1
+
+            present_total.append(ptotal)
+
+            if student.firsthr == "A":
+                atotal = atotal + 1
+                # present_total.append(atotal)
+
+            if student.secondhr == "A":
+                atotal = atotal + 1
+                # present_total.append(atotal)
+
+            if student.thirdhr == "A":
+                atotal = atotal + 1
+                # present_total.append(atotal)
+
+            if student.fourthhr == "A":
+                atotal = atotal + 1
+                # present_total.append(atotal)
+
+            if student.fifthhr == "A":
+                atotal = atotal + 1
+                # present_total.append(atotal)
+
+            if student.sixthhr == "A":
+                atotal = atotal + 1
+
+            prev_name = student.name;
+            prev_ptotal = ptotal
+            prev_atotal = atotal
+            absent_total.append(atotal)
+            total.append(atotal + ptotal)
+            # print("id ",student.id);
+            RollnoRegnoMap.objects.filter(id=student.id, branch=branch, cursem=cursem, section=section).update(
+                atotal=atotal, ptotal=ptotal, )
+
+            # obj,created = Attendence.objects.update_or_create().filter()
+
+        print("p ", ptotal)
+        print("a ", atotal)
+        print(present_total)
+        print(absent_total)
+        print("total ", total)
+
+        context = {'list': list,
+                   'year': list[0].year,
+                   'end_year': list[0].year + 4,
+                   # 'facultyid': facultyid,
+                   # 'subcode': subcode,
+                   'cursem': cursem,
+                   'branch': branch,
+                   'section': section,
+                   'present_total': present_total,
+                   'absent_total': absent_total,
+                   'total': total,
+                   }
+
+        return render(request, 'student/attendence_pdf_view.html', context)
+
+        # html_string = render_to_string('student/attendence_pdf_view.html', context)
+        # html = HTML(string=html_string)
+        # doc = html.render()
+        # pdf = doc.write_pdf()
+        # pdf['Content-Disposition']='inline;filename:attendem.pdf'
+        # pdf['Content-Disposition'] = 'attachment;filename:attendence.pdf'
+        # return HttpResponse(pdf, content_type='application/pdf')
+
+
+def email(request):
+    subject = 'Welcome user '
+    message = 'Thank you for registering to our site '
+    email_from = settings.EMAIL_HOST_USER
+    recipient_list = ['swamysneduvelil@gmail.com']
+
+    send_mail(subject, message, email_from, recipient_list, fail_silently=True)
+    return redirect("student:home")
+
+
+#
+# from googlevoice import Voice
+# from googlevoice.util import input
+# def sms(request):
+#     username = settings.EMAIL_HOST_USER
+#     password = settings.EMAIL_HOST_PASSWORD
+#
+#     voice=Voice()
+#     voice.login(username,password)
+#     voice.send_sms("+918547485481",'Hello swamys')
+
+
+
+def t(request):
+    html_string = render_to_string('student/marklist_pdf_view.html', context)
+    html = HTML(string=html_string)
+    doc = html.render()
+    pdf = doc.write_pdf()
+    pdf['Content-Disposition'] = 'inline;filename:attendence.pdf'
+    return HttpResponse(pdf, content_type='application/pdf')
+
+    # return render(request,'student/attendence_pdf_view.html');
+
+
+def pdf_view(request):
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = 'inline;filename="marklist.pdf"'
+    buffer = BytesIO()
+    p = canvas.Canvas(buffer)
+    p.drawString(100, 100, 'Hello World')
+    p.showPage()
+    p.save()
+    pdf = buffer.getvalue()
+    buffer.close()
+    response.write(pdf)
+    return response
+
+
+@login_required()
+def StudentCsv(request):
+    if request.user.groups.filter(name='Dataop') or request.user.groups.filter(name='Admin'):
+
+        data = {}
+
+        if "GET" == request.method:
+            return render(request, "student/studentcsv.html", data)
+            # if not GET, then proceed
+        try:
+            csv_file = request.FILES["csv_file"]
+            logger.info('URL %s calls StudentCsv ', request.get_full_path())
+            logger.info('username %s ',request.user.username)
+            if not csv_file.name.endswith('.csv'):
+                logger.error('File is not CSV type %s',request.FILES["csv_file"])
+                return HttpResponseRedirect(reverse("student:student_addcsv"))
+                # if file is too large, return
+            if csv_file.multiple_chunks():
+                logger.error("Uploaded file is too big (%.2f MB)." % (csv_file.size / (1000 * 1000),))
+                logger.error("filename %s ",request.FILES["csv_file"])
+                return HttpResponseRedirect(reverse("student:student_addcsv"))
+
+            file_data = csv_file.read().decode("utf-8")
+            # print("file data ", file_data)
+
+            lines = file_data.split("\n")
+            # print("lines ", lines)
+            lines.pop()
+
+            # loop over the lines and save them in db. If error , store as string and then display
+            firstline = True
+
+            for line in lines:
+                if firstline:
+                    firstline = False
+                else:
+                    fields = line.split(",")
+                    # print("fields ", fields)
+                    data_dict = {}
+
+                    # print("+++++++++", data_dict)
+                    data_dict["regno"] = fields[0]
+                    data_dict["name"] = fields[1]
+                    data_dict["branch"] = fields[2]
+                    data_dict["cursem"] = fields[3]
+                    data_dict["join"] = fields[4]
+                    data_dict["section"] = fields[5]
+                    data_dict["status"] = fields[6]
+                    data_dict["admtype"] = fields[7]
+                    data_dict["gender"] = fields[8]
+                    data_dict["admissionno"] = fields[9]
+                    data_dict["permanentaddress"] = fields[10]
+                    data_dict["temporaryaddress"] = fields[11]
+                    data_dict["dateofbirth"] = fields[12]
+                    data_dict["category"] = fields[13]
+                    data_dict["emailid"] = fields[14]
+                    data_dict["personwithdisabilities"] = fields[15]
+                    data_dict["catrank"] = fields[16]
+                    data_dict["religion"] = fields[17]
+
+                    data_dict["bloodgroup"] = fields[18]
+                    data_dict["parentorguardianname"] = fields[19]
+                    data_dict["parentorguardianoccupation"] = fields[20]
+                    data_dict["parentorguardiancontactno"] = fields[21]
+                    data_dict["parentorguardianemailid"] = fields[22]
+                    data_dict["studentcontactno"] = fields[23]
+                    data_dict["miniproject"] = fields[24]
+
+                    data_dict["miniprojectguide"] = fields[25]
+                    data_dict["mainproject"] = fields[26]
+                    data_dict["mainprojectguide"] = fields[27]
+                    data_dict["behaviour"] = fields[28]
+                    data_dict["studentemailid"] = fields[29]
+                    data_dict["tenboard"] = fields[30]
+                    data_dict["tenregisterno"] = fields[31]
+                    data_dict["tenmarks"] = fields[32]
+                    data_dict["tenpercentage"] = fields[33]
+                    data_dict["tenyear"] = fields[34]
+
+                    data_dict["qualifyingboard"] = fields[35]
+                    data_dict["qualifyingregisterno"] = fields[36]
+                    data_dict["qualifyingmarks"] = fields[37]
+                    data_dict["qualifyingpercentage"] = fields[38]
+                    data_dict["qualifyingyear"] = fields[39]
+                    data_dict["specialreservation"] = fields[40]
+
+                try:
+                    form = StudentCsvForm(data_dict)
+                    # print("-----------", data_dict)
+                    if form.is_valid():
+                        form.save()
+                    else:
+                        logger.error(form.errors.as_json())
+                except Exception as e:
+                    logger.error(repr(e))
+                    pass
+
+        except Exception as e:
+            logger.error("Unable to upload file. " + repr(e))
+            logger.error("filename %s ", request.FILES["csv_file"])
+
+        return HttpResponseRedirect(reverse("student:index"))
+
+    else:
+        context = {"perm_error": 'You do not have permission to access this page'}
+
+        return render(request, 'student/login.html', context)
+
+
+from .forms import MarklistCsvform
+
+
+@login_required()
+def MarklistCsv(request):
+    if request.user.groups.filter(name='Dataop') or request.user.groups.filter(name='Admin'):
+
+        data = {}
+
+        if "GET" == request.method:
+            return render(request, "student/marklistcsv.html", data)
+            # if not GET, then proceed
+        try:
+            csv_file = request.FILES["csv_file"]
+            logger.info("URL %s calls MarklistCsv ",request.get_full_path())
+            logger,info("username %s ",request.user.username)
+            if not csv_file.name.endswith('.csv'):
+                logger.error("File is not CSV type %s", request.FILES['csv_file'])
+                return HttpResponseRedirect(reverse("student:student_addcsv"))
+                # if file is too large, return
+            if csv_file.multiple_chunks():
+                logger.error("Uploaded file is too big (%.2f MB)." % (csv_file.size / (1000 * 1000),))
+                logger.error("filename %s ",request.FILES["csv_file"])
+                return HttpResponseRedirect(reverse("student:student_addcsv"))
+
+            file_data = csv_file.read().decode("utf-8")
+            # print("file data ", file_data)
+
+            lines = file_data.split("\n")
+            # print("lines ", lines)
+            lines.pop()
+
+            # loop over the lines and save them in db. If error , store as string and then display
+            firstline = True
+
+            for line in lines:
+                if firstline:
+                    firstline = False
+                else:
+                    fields = line.split(",")
+                    # print("fields ", fields)
+                    data_dict = {}
+
+                    # print("+++++++++", data_dict)
+                    data_dict["regno"] = fields[0]
+
+                    data_dict["branch"] = fields[1]
+                    data_dict["cursem"] = fields[2]
+                    data_dict["section"] = fields[3]
+                    data_dict["type"] = fields[4]
+                    data_dict["join"] = fields[5]
+                    data_dict["chance"] = fields[6]
+
+                    data_dict["subcode1"] = fields[7]
+                    data_dict["mark1"] = fields[8]
+
+                    data_dict["subcode2"] = fields[9]
+                    data_dict["mark2"] = fields[10]
+
+                    data_dict["subcode3"] = fields[11]
+                    data_dict["mark3"] = fields[12]
+
+                    data_dict["subcode4"] = fields[13]
+                    data_dict["mark4"] = fields[14]
+
+                    data_dict["subcode5"] = fields[15]
+                    data_dict["mark5"] = fields[16]
+
+                    data_dict["subcode6"] = fields[17]
+                    data_dict["mark6"] = fields[18]
+
+                    data_dict["subcodel1"] = fields[19]
+                    data_dict["markl1"] = fields[20]
+
+                    data_dict["subcodel2"] = fields[21]
+                    data_dict["markl2"] = fields[22]
+
+                    data_dict["subcodel3"] = fields[23]
+                    data_dict["markl3"] = fields[24]
+
+                    data_dict["subcodel4"] = fields[25]
+                    data_dict["markl4"] = fields[26]
+
+                try:
+                    form = MarklistCsvform(data_dict)
+                    print("csv data", data_dict)
+                    # print("modelform ",form)
+                    if form.is_valid():
+                        form.save()
+                    else:
+                        logger.error(form.errors.as_json())
+                except Exception as e:
+                    logger.error(repr(e))
+                    pass
+
+        except Exception as e:
+            logger.error("Unable to upload file. " + repr(e))
+            logger.error("filename %s ",request.FILES["csv_file"])
+
+        return HttpResponseRedirect(reverse("student:index"))
+
+    else:
+        context = {"perm_error": 'You do not have permission to access this page'}
+
+        return render(request, 'student/login.html', context)
+
+
+from .forms import AttendenceCsvForm
+
+
+@login_required()
+def AttendenceCsv(request):
+    if request.user.groups.filter(name='Dataop') or request.user.groups.filter(name='Admin'):
+
+        data = {}
+
+        if "GET" == request.method:
+            return render(request, "student/attendencecsv.html", data)
+            # if not GET, then proceed
+        try:
+            csv_file = request.FILES["csv_file"]
+            logger.info("URL %s calls AttendenceCsv ", request.get_full_path())
+            logger.info("username %s ",request.user.username)
+            if not csv_file.name.endswith('.csv'):
+                logger.error('File is not CSV type %s',request.FILES["csv_file"])
+                return HttpResponseRedirect(reverse("student:student_addcsv"))
+                # if file is too large, return
+            if csv_file.multiple_chunks():
+                logger.error("Uploaded file is too big (%.2f MB)." % (csv_file.size / (1000 * 1000),))
+                logger.info(
+                return HttpResponseRedirect(reverse("student:student_addcsv"))
+
+            file_data = csv_file.read().decode("utf-8")
+            # print("file data ", file_data)
+
+            lines = file_data.split("\n")
+            # print("lines ", lines)
+            lines.pop()
+
+            # loop over the lines and save them in db. If error , store as string and then display
+            firstline = True
+
+            for line in lines:
+                if firstline:
+                    firstline = False
+                else:
+                    fields = line.split(",")
+                    # print("fields ", fields)
+                    data_dict = {}
+
+                    # print("+++++++++", data_dict)
+                    data_dict["regno"] = fields[0]
+                    data_dict["rollno"] = fields[1]
+
+                    data_dict["section"] = fields[2]
+                    data_dict["year"] = fields[3]
+
+                    data_dict["branch"] = fields[4]
+                    data_dict["firsthr"] = fields[5]
+                    data_dict["secondhr"] = fields[6]
+                    data_dict["thirdhr"] = fields[7]
+                    data_dict["fourthhr"] = fields[8]
+                    data_dict["fifthhr"] = fields[9]
+                    data_dict["sixthhr"] = fields[10]
+
+                    data_dict["facultyid"] = fields[11]
+                    data_dict["subjectcode"] = fields[12]
+                    data_dict["cursem"] = fields[13]
+
+                    data_dict["name"] = fields[14]
+                    # data_dict[""]
+                    try:
+                        form = AttendenceCsvForm(data_dict)
+                        # print("-----------", data_dict)
+                        if form.is_valid():
+                            form.save()
+                        else:
+                            logging.getLogger("error_logger").error(form.errors.as_json())
+                    except Exception as e:
+                        logging.getLogger("error_logger").error(repr(e))
+                        pass
+
+        except Exception as e:
+            logging.getLogger("error_logger").error("Unable to upload file. " + repr(e))
+            messages.error(request, "Unable to upload file. " + repr(e))
+
+        return HttpResponseRedirect(reverse("student:index"))
+
+    else:
+        context = {"perm_error": 'You do not have permission to access this page'}
+
+        return render(request, 'student/login.html', context)
+
+
+from .filters import StudentDetailFilter
+
+# @login_required()
+
+from django.template.loader import render_to_string, get_template
+from django.core.files.storage import FileSystemStorage
+from weasyprint import HTML
+
+
+def render_to_pdf(request):
+    if request.method == 'GET':
+        if 'regno' in request.GET or 'cursem' in request.GET or 'branch' in request.GET:
+            regno = request.GET['regno']
+            cursem = request.GET['cursem']
+            branch = request.GET['branch']
+            # print("++++++++++++++", request.GET)
+
+            list = get_list_or_404(Student, pk=regno)
+            marklist = get_list_or_404(Marklist, regno=regno, branch=branch, cursem=cursem)
+            sub1 = get_object_or_404(Subject_Profile, code=marklist[0].subcode1)
+
+            sub2 = get_object_or_404(Subject_Profile, code=marklist[0].subcode2)
+            sub3 = get_object_or_404(Subject_Profile, code=marklist[0].subcode3)
+            sub4 = get_object_or_404(Subject_Profile, code=marklist[0].subcode4)
+
+            if marklist[0].subcode5 != 0:
+
+                sub5 = Subject_Profile.objects.filter(code=marklist[0].subcode5)
+            else:
+                sub5 = "empty"
+
+            if marklist[0].subcode6 != 0:
+
+                sub6 = Subject_Profile.objects.filter(code=marklist[0].subcode6)
+            else:
+                sub6 = "empty"
+
+            if marklist[0].subcodel3 != 0:
+
+                subl3 = Subject_Profile.objects.filter(code=marklist[0].subcodel3)
+            else:
+                subl3 = "empty"
+
+            if marklist[0].subcodel4 != 0:
+
+                subl4 = Subject_Profile.objects.filter(code=marklist[0].subcodel4)
+            else:
+                subl4 = "empty"
+            #
+            # subl1 = Subject_Profile.objects.filter(code=marklist[1].subcodel1)
+            # subl2 = Subject_Profile.objects.filter(code=marklist[1].subcodel2)
+            #
+            # subl3 = Subject_Profile.objects.filter(code=marklist[1].subcodel3)
+            # subl4 = Subject_Profile.objects.filter(code=marklist[1].subcodel4)
+            # sub5 = get_object_or_404(Subject_Profile,code=marklist[1].subcode1)
+            # sub6 = get_object_or_404(Subject_Profile,code=marklist[1].subcode1)
+            subl1 = get_object_or_404(Subject_Profile, code=marklist[1].subcodel1)
+            subl2 = get_object_or_404(Subject_Profile, code=marklist[1].subcodel2)
+            # subl3 = get_object_or_404(Subject_Profile,code=marklist[1].subcode1)
+            # subl4 = get_object_or_404(Subject_Profile,code=marklist[1].subcode1)
+            # subl5 = get_object_or_404(Subject_Profile,code=marklist[1].subcode1)
+            #
+            # print("ffffffffffffffffsubcode5 ", marklist[0].subcode5)
+            # print("ffffffffffffffffsub5 ", sub5[0].name)
+            #
+            # print("ffffffffffffffffsubcode6 ", marklist[0].subcode6)
+            # print("ffffffffffffffffsub6 ", sub6)
+            #
+            # print("ffffffffffffffffsubcodeL3 ", marklist[0].subcodel3)
+            # print("ffffffffffffffffsubL3 ", subl3)
+            #
+            # print("ffffffffffffffffsubcodeL4 ", marklist[0].subcodel4)
+            # print("ffffffffffffffffsubL4 ", subl4)
+
+            context = {'list': list,
+                       'marks': marklist,
+                       'sub1': sub1,
+                       'sub2': sub2,
+                       'sub3': sub3,
+                       'sub4': sub4,
+                       'sub5': sub5,
+                       'sub6': sub6,
+                       'subl1': subl1,
+                       'subl2': subl2,
+                       'subl3': subl3,
+                       'subl4': subl4,
+                       'template': 'marklist_pdf_view.html',
+                       }
+
+            html_string = render_to_string('student/marklist_pdf_view.html', context)
+            html = HTML(string=html_string)
+            doc = html.render()
+            pdf = doc.write_pdf()
+            # pdf['Content-Disposition']='inline;filename:marklist.pdf'
+            return HttpResponse(pdf, content_type='application/pdf')
+
+
+def pdf_form(request):
+    return render(request, 'student/pdf_details.html')
+
+
+def studentdetail_search(request):
+    if request.method == 'GET':
+        if 'regno' in request.GET or 'cursem' in request.GET or 'branch' in request.GET:
+            regno = request.GET['regno']
+            cursem = request.GET['cursem']
+            branch = request.GET['branch']
+            # print("++++++++++++++", request.GET)
+
+            list = get_list_or_404(Student, pk=regno)
+            marklist = get_list_or_404(Marklist, regno=regno, branch=branch, cursem=cursem)
+            sub1 = get_object_or_404(Subject_Profile, code=marklist[0].subcode1)
+
+            sub2 = get_object_or_404(Subject_Profile, code=marklist[0].subcode2)
+            sub3 = get_object_or_404(Subject_Profile, code=marklist[0].subcode3)
+            sub4 = get_object_or_404(Subject_Profile, code=marklist[0].subcode4)
+
+            if marklist[0].subcode5 != 0:
+
+                sub5 = Subject_Profile.objects.filter(code=marklist[0].subcode5)
+            else:
+                sub5 = 0
+
+            if marklist[0].subcode6 != 0:
+
+                sub6 = Subject_Profile.objects.filter(code=marklist[0].subcode6)
+            else:
+                sub6 = 0
+
+            if marklist[0].subcodel3 != 0:
+
+                subl3 = Subject_Profile.objects.filter(code=marklist[0].subcodel3)
+            else:
+                subl3 = 0
+
+            if marklist[0].subcodel4 != 0:
+
+                subl4 = Subject_Profile.objects.filter(code=marklist[0].subcodel4)
+            else:
+                subl4 = 0
+
+            print("sss6 ", marklist[0].subcode6)
+            print(" type ",type(marklist[0].subcode6))
+            # subl1 = Subject_Profile.objects.filter(code=marklist[1].subcodel1)
+            # subl2 = Subject_Profile.objects.filter(code=marklist[1].subcodel2)
+            #
+            # subl3 = Subject_Profile.objects.filter(code=marklist[1].subcodel3)
+            # subl4 = Subject_Profile.objects.filter(code=marklist[1].subcodel4)
+            # sub5 = get_object_or_404(Subject_Profile,code=marklist[1].subcode1)
+            # sub6 = get_object_or_404(Subject_Profile,code=marklist[1].subcode1)
+            subl1 = get_object_or_404(Subject_Profile, code=marklist[0].subcodel1)
+            subl2 = get_object_or_404(Subject_Profile, code=marklist[0].subcodel2)
+            # subl3 = get_object_or_404(Subject_Profile,code=marklist[1].subcode1)
+            # subl4 = get_object_or_404(Subject_Profile,code=marklist[1].subcode1)

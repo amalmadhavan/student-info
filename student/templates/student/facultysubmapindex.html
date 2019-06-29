@@ -1,0 +1,18 @@
+{% extends 'student/base.html' %}
+{% block body %}
+
+<h2>Faculty List </h2>
+  <ul>
+      {%for i in object_list %}
+      <li><a href="{% url 'student:faculty_editsubmap' i.empid%}">{{ i.empid }} </a>&nbsp&nbsp&nbsp
+{#         <a href="{% url 'student:faculty_edit' i.empid%}">Edit</a>&nbsp&nbsp&nbsp#}
+{##}
+{#         <a href="{% url 'student:faculty_delete' i.empid %}">Delete </a>#}
+{#          <a href="{% url 'student:delete' i.regno %}">Delete </a>#}
+
+      </li>
+      {%endfor %}
+  </ul>
+
+
+{% endblock %}

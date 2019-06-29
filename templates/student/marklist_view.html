@@ -1,0 +1,91 @@
+<html>
+
+{#{% extends 'student/base.html'%}#}
+{% block body %}
+
+
+  <!--<h1>Welcome student {{i.name}}</h1>-->
+
+{#   {% load staticfiles %}#}
+{#    <link rel="stylesheet" type="text/css" href="{% static 'student/datatables.css' %}">#}
+{#    <script type="text/javascript" src="{% static  'student/datatables.min.js'%}"></script>#}
+
+
+   <script>
+    $(document).ready(function() {
+        $('#tables').DataTable();
+    }
+    </script>
+
+<body>
+
+
+  <h1>Marklist of Student !!!</h1>
+   <div class="table-responsive">
+    <table id="tables" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+      <tr>
+          <th>
+              <label>Photo </label>
+          </th>
+          <th>
+               <label> Register Number </label>
+          </th>
+
+          <th>
+               <label> Student Name </label>
+          </th>
+
+          <th>
+              <label> Branch  </label>
+          </th>
+
+           <th>
+              <label> Current Semester </label>
+          </th>
+
+           <th>
+                  <label> Year of Join </label>
+          </th>
+
+          <th>
+            <label> Section</label>
+          </th>
+      </tr>
+    {% for i in list %}
+       <tr>
+           <td>
+
+           </td>
+           <td>
+                {{i.regno}}
+           </td>
+
+            <td>
+               {{i.branch}}
+           </td>
+
+            <td>
+               {{i.cursem}}
+           </td>
+
+           <td>
+               {{i.section}}
+           </td>
+
+            <td>
+                 {{i.sub1}}
+           </td>
+
+           <td>
+                {{i.mark1}}
+           </td>
+
+       </tr>
+{#       <img src="{{ i.photo.url }}">#}
+   {% endfor %}
+  </table>
+   </div>
+
+{% endblock %}
+</body>
+</html>

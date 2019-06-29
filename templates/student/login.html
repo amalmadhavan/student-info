@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome To Student Academic Information System</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+    <!--[if lte IE 8]>
+    <script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'student/assets/css/main.css' %}"/>
+    <!--[if lte IE 9]>
+    <link rel="stylesheet" href="assets/css/ie9.css"/><![endif]-->
+    <!--[if lte IE 8]>
+    <link rel="stylesheet" href="assets/css/ie8.css"/><![endif]-->
+</head>
+<body style="background-color:#F0F0F0">
+
+<form action="/student/login_user/" method="POST">
+    {%load static %}
+    <div class="col-md-4">
+    <img style="margin-left:580px;margin-top:100px;display:block;" src="{%  static 'student/images/pic01.jpg'%}" />
+    <h2 style="font-family:Arial;text-align:center;margin-top:10px">Welcome to Student Academic Information System</h2>
+        <h2 style="font-family:Arial;text-align:center;">School Of Engineering, CUSAT </h2>
+    </div>
+    <fieldset style="
+    width: 500px;padding-left:400px;padding-top:30px;
+">
+        <div class="4u 12u$(small)">
+            <span class="text-danger small">{{error}}</span>
+            <span class="text-danger small">{{perm_error}}</span>
+
+        </div>
+
+        {% csrf_token %}
+        <label style="font-size: medium;font-family:Arial;"> Username</label>
+        <input style="padding-right:50px" type="text" name="username" required="True">
+
+        <br>
+
+
+        <label style="font-size: medium;font-family:Arial"> Password</label>
+        <input type="password" name="password" required="True">
+
+
+        <div style="margin-left:200px; margin-top:20px;margin-right:200px">
+
+            <input type="submit" style="width=150px" value="Login">
+
+        </div>
+    </fieldset>
+</form>
+</div>
+
+</body>
+</html>
