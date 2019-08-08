@@ -394,7 +394,10 @@ def MarklistCsv(request):
                         form.save()
                     else:
                         logger.error(form.errors.as_json())
-                        return render(request,"student/faculty_attendance_main.html",{'obj':form.errors.as_json()})
+                        lst = []
+                        for i in form.errors:
+                            lst.append(str((i, form.errors[i])))
+                        return render(request, "student/faculty_attendance_main.html", {'obj': lst})
                 except Exception as e:
                     logger.error(repr(e))
                     pass
@@ -436,44 +439,9 @@ def AttendenceCsv(request):
                 logger.error("filename %s ", request.FILES['csv_file'])
                 return HttpResponseRedirect(reverse("student:student_addcsv"))
 
-            file_data = csv_file.read().decode("utf-8")
-            # print("file data ", file_data)
+            data = csv.DictReader(csv_file.read().decode('utf-8').splitlines())
 
-            lines = file_data.split("\n")
-            # print("lines ", lines)
-            lines.pop()
-
-            # loop over the lines and save them in db. If error , store as string and then display
-            firstline = True
-
-            for line in lines:
-                if firstline:
-                    firstline = False
-                else:
-                    fields = line.split(",")
-                    # print("fields ", fields)
-                    data_dict = {}
-
-                    # print("+++++++++", data_dict)
-                    data_dict["regno"] = fields[0]
-                    data_dict["rollno"] = fields[1]
-
-                    data_dict["section"] = fields[2]
-                    data_dict["year"] = fields[3]
-
-                    data_dict["branch"] = fields[4]
-                    data_dict["firsthr"] = fields[5]
-                    data_dict["secondhr"] = fields[6]
-                    data_dict["thirdhr"] = fields[7]
-                    data_dict["fourthhr"] = fields[8]
-                    data_dict["fifthhr"] = fields[9]
-                    data_dict["sixthhr"] = fields[10]
-
-                    data_dict["facultyid"] = fields[11]
-                    data_dict["subjectcode"] = fields[12]
-                    data_dict["cursem"] = fields[13]
-
-                    data_dict["name"] = fields[14]
+            for data_dict in data:
                     # data_dict[""]
                     try:
                         form = AttendenceCsvForm(data_dict)
@@ -482,6 +450,10 @@ def AttendenceCsv(request):
                             form.save()
                         else:
                             logger.error(form.errors.as_json())
+                            lst = []
+                            for i in form.errors:
+                                lst.append(str((i, form.errors[i])))
+                            return render(request, "student/faculty_attendance_main.html", {'obj': lst})
                     except Exception as e:
                         logger.error(repr(e))
                         pass
