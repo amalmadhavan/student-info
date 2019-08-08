@@ -1,0 +1,9 @@
+{% extends 'student/home.html' %}
+
+{% block body %}
+    <p>errors</p>
+    {% for er in obj %}
+        <p>{{ er }}</p>
+    {% endfor %}
+
+{% endblock %}

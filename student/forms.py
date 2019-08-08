@@ -505,3 +505,6 @@ class RollnoRegnoMapAddForm(forms.ModelForm):
     class Meta:
         model = RollnoRegnoMap
         fields = '__all__'
+
+
+

@@ -1,3 +1,5 @@
+import csv
+
 from django.views import generic
 
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
@@ -9,7 +11,7 @@ from django.urls import reverse_lazy
 from django.contrib import messages
 from django.http import HttpResponse
 
-from .models import Subject_Profile, FacultySubject, Student, Faculty, Marklist
+from .models import Subject_Profile, FacultySubject, Student, Faculty, Marklist, ClassAttendanceMap
 from django.contrib.auth.models import User
 # for user forms (4 imports)
 from django.contrib.auth import authenticate, login
@@ -121,27 +123,27 @@ def attendence_calc(request, regno, section, cursem, id):
 
         list = RollnoRegnoMap.objects.filter(branch=branch, cursem=cursem, section=section, id=id).order_by('regno', )
 
-        names = [] 
+        names = []
 
         for student in list:
             names.append(student.name)
 
         print("naems are ", names)
         print("list ", list)
-        list2 = [] 
+        list2 = []
 
         # list2 = RollnoRegnoMap.objects.filter(bra)
         # print("len list ", len(list))
         # print("zxzx1 ",list[0].name)
         # print("zczcszxzx1 ", list[1].name)
-        total = [] 
-        present_total = [] 
-        absent_total = [] 
-        ptotal = 0 
-        atotal = 0 
-        prev_atotal = 0 
-        prev_ptotal = 0 
-        prev_name = "" 
+        total = []
+        present_total = []
+        absent_total = []
+        ptotal = 0
+        atotal = 0
+        prev_atotal = 0
+        prev_ptotal = 0
+        prev_name = ""
 
         # student.ptotal=0 
         for student in list:
@@ -152,11 +154,11 @@ def attendence_calc(request, regno, section, cursem, id):
                 ptotal = 0
 
             if prev_name == student.name:
-                atotal = prev_atotal 
-                ptotal = prev_ptotal 
+                atotal = prev_atotal
+                ptotal = prev_ptotal
             else:
-                atotal = 0 
-                ptotal = 0 
+                atotal = 0
+                ptotal = 0
 
             if student.firsthr == "P":
                 ptotal = ptotal + 1
@@ -206,7 +208,7 @@ def attendence_calc(request, regno, section, cursem, id):
             if student.sixthhr == "A":
                 atotal = atotal + 1
 
-            prev_name = student.name 
+            prev_name = student.name
             prev_ptotal = ptotal
             prev_atotal = atotal
             absent_total.append(atotal)
@@ -316,69 +318,9 @@ def StudentCsv(request):
                 logger.error("filename %s ", request.FILES["csv_file"])
                 return HttpResponseRedirect(reverse("student:student_addcsv"))
 
-            file_data = csv_file.read().decode("utf-8")
-            # print("file data ", file_data)
+            data = csv.DictReader(csv_file.read().decode('utf-8').splitlines())
 
-            lines = file_data.split("\n")
-            # print("lines ", lines)
-            lines.pop()
-
-            # loop over the lines and save them in db. If error , store as string and then display
-            firstline = True
-
-            for line in lines:
-                if firstline:
-                    firstline = False
-                else:
-                    fields = line.split(",")
-                    # print("fields ", fields)
-                    data_dict = {}
-
-                    # print("+++++++++", data_dict)
-                    data_dict["regno"] = fields[0]
-                    data_dict["name"] = fields[1]
-                    data_dict["branch"] = fields[2]
-                    data_dict["cursem"] = fields[3]
-                    data_dict["join"] = fields[4]
-                    data_dict["section"] = fields[5]
-                    data_dict["status"] = fields[6]
-                    data_dict["admtype"] = fields[7]
-                    data_dict["gender"] = fields[8]
-                    data_dict["admissionno"] = fields[9]
-                    data_dict["permanentaddress"] = fields[10]
-                    data_dict["temporaryaddress"] = fields[11]
-                    data_dict["dateofbirth"] = fields[12]
-                    data_dict["category"] = fields[13]
-                    data_dict["emailid"] = fields[14]
-                    data_dict["personwithdisabilities"] = fields[15]
-                    data_dict["catrank"] = fields[16]
-                    data_dict["religion"] = fields[17]
-
-                    data_dict["bloodgroup"] = fields[18]
-                    data_dict["parentorguardianname"] = fields[19]
-                    data_dict["parentorguardianoccupation"] = fields[20]
-                    data_dict["parentorguardiancontactno"] = fields[21]
-                    data_dict["parentorguardianemailid"] = fields[22]
-                    data_dict["studentcontactno"] = fields[23]
-                    data_dict["miniproject"] = fields[24]
-
-                    data_dict["miniprojectguide"] = fields[25]
-                    data_dict["mainproject"] = fields[26]
-                    data_dict["mainprojectguide"] = fields[27]
-                    data_dict["behaviour"] = fields[28]
-                    data_dict["studentemailid"] = fields[29]
-                    data_dict["tenboard"] = fields[30]
-                    data_dict["tenregisterno"] = fields[31]
-                    data_dict["tenmarks"] = fields[32]
-                    data_dict["tenpercentage"] = fields[33]
-                    data_dict["tenyear"] = fields[34]
-
-                    data_dict["qualifyingboard"] = fields[35]
-                    data_dict["qualifyingregisterno"] = fields[36]
-                    data_dict["qualifyingmarks"] = fields[37]
-                    data_dict["qualifyingpercentage"] = fields[38]
-                    data_dict["qualifyingyear"] = fields[39]
-                    data_dict["specialreservation"] = fields[40]
+            for data_dict in data:
 
                 try:
                     form = StudentCsvForm(data_dict)
@@ -387,6 +329,10 @@ def StudentCsv(request):
                         form.save()
                     else:
                         logger.error(form.errors.as_json())
+                        lst=[]
+                        for i in form.errors:
+                            lst.append(str((i,form.errors[i])))
+                        return render(request,"student/faculty_attendance_main.html",{'obj':lst})
                 except Exception as e:
                     logger.error(repr(e))
                     pass
@@ -437,55 +383,9 @@ def MarklistCsv(request):
 
             # loop over the lines and save them in db. If error , store as string and then display
             firstline = True
+            data = csv.DictReader(csv_file.read().decode('utf-8').splitlines())
 
-            for line in lines:
-                if firstline:
-                    firstline = False
-                else:
-                    fields = line.split(",")
-                    # print("fields ", fields)
-                    data_dict = {}
-
-                    # print("+++++++++", data_dict)
-                    data_dict["regno"] = fields[0]
-
-                    data_dict["branch"] = fields[1]
-                    data_dict["cursem"] = fields[2]
-                    data_dict["section"] = fields[3]
-                    data_dict["type"] = fields[4]
-                    data_dict["join"] = fields[5]
-                    data_dict["chance"] = fields[6]
-
-                    data_dict["subcode1"] = fields[7]
-                    data_dict["mark1"] = fields[8]
-
-                    data_dict["subcode2"] = fields[9]
-                    data_dict["mark2"] = fields[10]
-
-                    data_dict["subcode3"] = fields[11]
-                    data_dict["mark3"] = fields[12]
-
-                    data_dict["subcode4"] = fields[13]
-                    data_dict["mark4"] = fields[14]
-
-                    data_dict["subcode5"] = fields[15]
-                    data_dict["mark5"] = fields[16]
-
-                    data_dict["subcode6"] = fields[17]
-                    data_dict["mark6"] = fields[18]
-
-                    data_dict["subcodel1"] = fields[19]
-                    data_dict["markl1"] = fields[20]
-
-                    data_dict["subcodel2"] = fields[21]
-                    data_dict["markl2"] = fields[22]
-
-                    data_dict["subcodel3"] = fields[23]
-                    data_dict["markl3"] = fields[24]
-
-                    data_dict["subcodel4"] = fields[25]
-                    data_dict["markl4"] = fields[26]
-
+            for data_dict in data:
                 try:
                     form = MarklistCsvform(data_dict)
                     print("csv data", data_dict)
@@ -494,6 +394,7 @@ def MarklistCsv(request):
                         form.save()
                     else:
                         logger.error(form.errors.as_json())
+                        return render(request,"student/faculty_attendance_main.html",{'obj':form.errors.as_json()})
                 except Exception as e:
                     logger.error(repr(e))
                     pass
@@ -2231,14 +2132,14 @@ def attendence_list_pdf(request):
         logger.info("URL %s calls attendence_list_pdf() ", request.get_full_path())
         logger.info("username %s ", request.user.username)
 
-        total = [] 
-        present_total = [] 
-        absent_total = [] 
-        ptotal = 0 
-        atotal = 0 
-        prev_atotal = 0 
-        prev_ptotal = 0 
-        prev_name = "" 
+        total = []
+        present_total = []
+        absent_total = []
+        ptotal = 0
+        atotal = 0
+        prev_atotal = 0
+        prev_ptotal = 0
+        prev_name = ""
 
         list = RollnoRegnoMap.objects.filter(branch=branch, cursem=cursem, section=section).order_by('regno', )
 
@@ -2250,11 +2151,11 @@ def attendence_list_pdf(request):
                 ptotal = 0
 
             if prev_name == student.name:
-                atotal = prev_atotal 
-                ptotal = prev_ptotal 
+                atotal = prev_atotal
+                ptotal = prev_ptotal
             else:
-                atotal = 0 
-                ptotal = 0 
+                atotal = 0
+                ptotal = 0
 
             if student.firsthr == "P":
                 ptotal = ptotal + 1
@@ -2304,7 +2205,7 @@ def attendence_list_pdf(request):
             if student.sixthhr == "A":
                 atotal = atotal + 1
 
-            prev_name = student.name 
+            prev_name = student.name
             prev_ptotal = ptotal
             prev_atotal = atotal
             absent_total.append(atotal)
@@ -2324,6 +2225,7 @@ def attendence_list_pdf(request):
                    'branch': branch,
                    'section': section,
                    }
+
 
         attendence_resource = AttendenceResource()
         dataset = attendence_resource.export(queryset=list)
@@ -2363,7 +2265,7 @@ def attendence_pdf(request):
 @login_required()
 def attendence_search(request):
     # print("ddd ",request.user.first_name)
-    faculty = None 
+    faculty = None
     if request.user.groups.filter(name='Dataop') or request.user.groups.filter(
             name='Admin') or request.user.groups.filter(name='Faculty'):
 
@@ -2396,6 +2298,7 @@ def attendence_search(request):
         context = {"perm_error": 'You do not have permission to access this page'}
 
         return render(request, 'student/login.html', context)
+
 
 # from .models import RollnoRegnoMap
 
@@ -2448,4 +2351,11 @@ def attendence_search(request):
 #     return render(request, 'student/studentfacultylabmap_form.html',context)
 #
 
-# @login_required()
+@login_required()
+def facultyattendancepage(request):
+    obj = ClassAttendanceMap.objects.get_or_create(pk=1,)
+    lst = []
+    for i in range(1, 101):
+
+        lst.append(getattr(obj, 'r' + str(i)))
+    return render(request, 'student/faculty_attendance_main.html', {'model': obj})

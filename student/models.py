@@ -1,3 +1,4 @@
+import django
 from django.db import models
 from django.urls import reverse
 import datetime
@@ -76,7 +77,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
             'Unselect this instead of deleting accounts.'
         ),
     )
-    date_joined = models.DateTimeField(('date joined'), default=now())
+    date_joined = models.DateTimeField(('date joined'), default=django.utils.timezone.now)
 
     objects = CustomUserManager()
 
@@ -109,12 +110,11 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
         send_mail(subject, message, from_email, [self.email], **kwargs)
 
 
-
 def upload_location(instance, filename):
     return "student/%s/%s" % (instance.regno, filename)
 
 
-class Student(models.Model):  
+class Student(models.Model):
     SECTION = (('A', 'A'), ('B', 'B'))
 
     BRANCHES = (('CS', 'Computer Science And Engineering'), ('IT', 'Information Technology'),
@@ -314,15 +314,15 @@ class Marklist(models.Model):
     # sub4 = models.ForeignKey(Subject_Profile, on_delete=models.CASCADE, related_name='Sub4')
     mark4 = models.SmallIntegerField(default='0')
 
-    subcode5 = models.CharField(max_length=15, default='0',blank=True,null=True)
+    subcode5 = models.CharField(max_length=15, default='0', blank=True, null=True)
     # sub5 = models.CharField(max_length=70, default='0')
     # sub5 = models.ForeignKey(Subject_Profile, on_delete=models.CASCADE, related_name='Sub5')
     mark5 = models.SmallIntegerField(default='0')
 
-    subcode6 = models.CharField(max_length=15, default='0',blank=True,null=True)
+    subcode6 = models.CharField(max_length=15, default='0', blank=True, null=True)
     # sub6 = models.CharField(max_length=70, default='0')
     # sub6 = models.ForeignKey(Subject_Profile, on_delete=models.CASCADE, related_name='Sub6')
-    mark6 = models.SmallIntegerField(default='0',blank=True,null=True)
+    mark6 = models.SmallIntegerField(default='0', blank=True, null=True)
 
     subcodel1 = models.ForeignKey(Subject_Profile, on_delete=models.CASCADE, related_name='Subcodel1')
     # subl1 = models.CharField(max_length=60, default='0')
@@ -336,18 +336,18 @@ class Marklist(models.Model):
     # subl2 = models.CharField(max_length=60, default='0')
     markl2 = models.SmallIntegerField(default='0')
 
-    subcodel3 = models.CharField(max_length=15, default='0',blank=True,null=True)
+    subcodel3 = models.CharField(max_length=15, default='0', blank=True, null=True)
     # subl3 = models.CharField(max_length=60,default='')
     # subl3 = models.ForeignKey(Subject_Profile, on_delete=models.CASCADE, related_name='Subl3')
-    markl3 = models.SmallIntegerField(default='0',blank=True,null=True)
+    markl3 = models.SmallIntegerField(default='0', blank=True, null=True)
 
-    subcodel4 = models.CharField(max_length=15, default='0',blank=True,null=True)
+    subcodel4 = models.CharField(max_length=15, default='0', blank=True, null=True)
     # subl4 = models.CharField(max_length=60,default='')
     # subl4 = models.ForeignKey(Subject_Profile, on_delete=models.CASCADE, related_name='Subl4')
     markl4 = models.SmallIntegerField(blank=True, default='0')
 
     def __str__(self):
-        return str(self.regno.regno) +' S' + str(self.cursem)
+        return str(self.regno.regno) + ' S' + str(self.cursem)
 
     class Meta:
         ordering = ('regno',)
@@ -380,8 +380,8 @@ class Faculty(models.Model):
     email = models.EmailField()
     contact = models.CharField(max_length=13)
     status = models.CharField(max_length=10)
-    datejoin = models.DateField(null=True,blank=True)
-    dateresig = models.DateField(null=True,blank=True)
+    datejoin = models.DateField(null=True, blank=True)
+    dateresig = models.DateField(null=True, blank=True)
 
     # accessLv = models.IntegerField()
 
@@ -391,7 +391,7 @@ class Faculty(models.Model):
 
     def __str__(self):
         # return str(self.regno.regno) + ' ' + str(self.regno.name)
-        return str(self.empid) + ' '+ str(self.ename)
+        return str(self.empid) + ' ' + str(self.ename)
 
     def get_absolute_url(self):
         return reverse('student:faculty_show', kwargs={'pk': self.pk})
@@ -470,7 +470,7 @@ class RollnoRegnoMap(models.Model):
     ptotal = models.IntegerField(default='-1')
     atotal = models.IntegerField(default='-1')
     ftotal = models.IntegerField(default='-1')
-    time = models.DateTimeField(default=now())
+    time = models.DateTimeField(default=django.utils.timezone.now)
 
     def __str__(self):
         return str(self.rollno) + "_" + str(self.regno)
@@ -481,6 +481,7 @@ class RollnoRegnoMap(models.Model):
     class Meta:
         ordering = ('id',)
         get_latest_by = 'time'
+
 
 # class StudentFacultyLabMap(models.Model):
 #     BRANCHES = (('CS', 'Computer Science And Engineering'), ('IT', 'Information Technology'),
@@ -503,3 +504,118 @@ class RollnoRegnoMap(models.Model):
 #
 #     def get_absolute_url(self):
 #         return reverse('student:index', kwargs={'pk': self.pk})
+
+class ClassAttendanceMap(models.Model):
+    BRANCHES = (('CS', 'Computer Science And Engineering'), ('IT', 'Information Technology'),
+                ('EEE', 'Electrical & Electronics Engineering'), ('EC', 'Electronics & Communication Engineering'),
+                ('SFE', 'Safety & Fire Engineering'), ('CE', 'Civil Engineering'),
+                ('ME', 'Mechanical Engineering'))
+    SEMESTERS = (('1', 'S1'), ('2', 'S2'), ('3', 'S3'), ('4', 'S4'), ('5', 'S5'), ('6', 'S6'), ('7', 'S7'),
+                 ('8', 'S8'))
+
+    key_field = models.CharField(primary_key=True,max_length=1024)
+    subcode = models.OneToOneField(Subject_Profile, on_delete=models.CASCADE, verbose_name='Subject Code')
+    date = models.DateField(default=django.utils.timezone.now)
+    semester =  models.CharField(max_length=2, choices=SEMESTERS)
+    branch = models.CharField(max_length=50, choices=BRANCHES)
+
+    r1 = models.BooleanField(verbose_name='roll number 1', default=True)
+    r2 = models.BooleanField(verbose_name='roll number 2', default=True)
+    r3 = models.BooleanField(verbose_name='roll number 3', default=True)
+    r4 = models.BooleanField(verbose_name='roll number 4', default=True)
+    r5 = models.BooleanField(verbose_name='roll number 5', default=True)
+    r6 = models.BooleanField(verbose_name='roll number 6', default=True)
+    r7 = models.BooleanField(verbose_name='roll number 7', default=True)
+    r8 = models.BooleanField(verbose_name='roll number 8', default=True)
+    r9 = models.BooleanField(verbose_name='roll number 9', default=True)
+    r10 = models.BooleanField(verbose_name='roll number 10', default=True)
+    r11 = models.BooleanField(verbose_name='roll number 11', default=True)
+    r12 = models.BooleanField(verbose_name='roll number 12', default=True)
+    r13 = models.BooleanField(verbose_name='roll number 13', default=True)
+    r14 = models.BooleanField(verbose_name='roll number 14', default=True)
+    r15 = models.BooleanField(verbose_name='roll number 15', default=True)
+    r16 = models.BooleanField(verbose_name='roll number 16', default=True)
+    r17 = models.BooleanField(verbose_name='roll number 17', default=True)
+    r18 = models.BooleanField(verbose_name='roll number 18', default=True)
+    r19 = models.BooleanField(verbose_name='roll number 19', default=True)
+    r20 = models.BooleanField(verbose_name='roll number 20', default=True)
+    r21 = models.BooleanField(verbose_name='roll number 21', default=True)
+    r22 = models.BooleanField(verbose_name='roll number 22', default=True)
+    r23 = models.BooleanField(verbose_name='roll number 23', default=True)
+    r24 = models.BooleanField(verbose_name='roll number 24', default=True)
+    r25 = models.BooleanField(verbose_name='roll number 25', default=True)
+    r26 = models.BooleanField(verbose_name='roll number 26', default=True)
+    r27 = models.BooleanField(verbose_name='roll number 27', default=True)
+    r28 = models.BooleanField(verbose_name='roll number 28', default=True)
+    r29 = models.BooleanField(verbose_name='roll number 29', default=True)
+    r30 = models.BooleanField(verbose_name='roll number 30', default=True)
+    r31 = models.BooleanField(verbose_name='roll number 31', default=True)
+    r32 = models.BooleanField(verbose_name='roll number 32', default=True)
+    r33 = models.BooleanField(verbose_name='roll number 33', default=True)
+    r34 = models.BooleanField(verbose_name='roll number 34', default=True)
+    r35 = models.BooleanField(verbose_name='roll number 35', default=True)
+    r36 = models.BooleanField(verbose_name='roll number 36', default=True)
+    r37 = models.BooleanField(verbose_name='roll number 37', default=True)
+    r38 = models.BooleanField(verbose_name='roll number 38', default=True)
+    r39 = models.BooleanField(verbose_name='roll number 39', default=True)
+    r40 = models.BooleanField(verbose_name='roll number 40', default=True)
+    r41 = models.BooleanField(verbose_name='roll number 41', default=True)
+    r42 = models.BooleanField(verbose_name='roll number 42', default=True)
+    r43 = models.BooleanField(verbose_name='roll number 43', default=True)
+    r44 = models.BooleanField(verbose_name='roll number 44', default=True)
+    r45 = models.BooleanField(verbose_name='roll number 45', default=True)
+    r46 = models.BooleanField(verbose_name='roll number 46', default=True)
+    r47 = models.BooleanField(verbose_name='roll number 47', default=True)
+    r48 = models.BooleanField(verbose_name='roll number 48', default=True)
+    r49 = models.BooleanField(verbose_name='roll number 49', default=True)
+    r50 = models.BooleanField(verbose_name='roll number 50', default=True)
+    r51 = models.BooleanField(verbose_name='roll number 51', default=True)
+    r52 = models.BooleanField(verbose_name='roll number 52', default=True)
+    r53 = models.BooleanField(verbose_name='roll number 53', default=True)
+    r54 = models.BooleanField(verbose_name='roll number 54', default=True)
+    r55 = models.BooleanField(verbose_name='roll number 55', default=True)
+    r56 = models.BooleanField(verbose_name='roll number 56', default=True)
+    r57 = models.BooleanField(verbose_name='roll number 57', default=True)
+    r58 = models.BooleanField(verbose_name='roll number 58', default=True)
+    r59 = models.BooleanField(verbose_name='roll number 59', default=True)
+    r60 = models.BooleanField(verbose_name='roll number 60', default=True)
+    r61 = models.BooleanField(verbose_name='roll number 61', default=True)
+    r62 = models.BooleanField(verbose_name='roll number 62', default=True)
+    r63 = models.BooleanField(verbose_name='roll number 63', default=True)
+    r64 = models.BooleanField(verbose_name='roll number 64', default=True)
+    r65 = models.BooleanField(verbose_name='roll number 65', default=True)
+    r66 = models.BooleanField(verbose_name='roll number 66', default=True)
+    r67 = models.BooleanField(verbose_name='roll number 67', default=True)
+    r68 = models.BooleanField(verbose_name='roll number 68', default=True)
+    r69 = models.BooleanField(verbose_name='roll number 69', default=True)
+    r70 = models.BooleanField(verbose_name='roll number 70', default=True)
+    r71 = models.BooleanField(verbose_name='roll number 71', default=True)
+    r72 = models.BooleanField(verbose_name='roll number 72', default=True)
+    r73 = models.BooleanField(verbose_name='roll number 73', default=True)
+    r74 = models.BooleanField(verbose_name='roll number 74', default=True)
+    r75 = models.BooleanField(verbose_name='roll number 75', default=True)
+    r76 = models.BooleanField(verbose_name='roll number 76', default=True)
+    r77 = models.BooleanField(verbose_name='roll number 77', default=True)
+    r78 = models.BooleanField(verbose_name='roll number 78', default=True)
+    r79 = models.BooleanField(verbose_name='roll number 79', default=True)
+    r80 = models.BooleanField(verbose_name='roll number 80', default=True)
+    r81 = models.BooleanField(verbose_name='roll number 81', default=True)
+    r82 = models.BooleanField(verbose_name='roll number 82', default=True)
+    r83 = models.BooleanField(verbose_name='roll number 83', default=True)
+    r84 = models.BooleanField(verbose_name='roll number 84', default=True)
+    r85 = models.BooleanField(verbose_name='roll number 85', default=True)
+    r86 = models.BooleanField(verbose_name='roll number 86', default=True)
+    r87 = models.BooleanField(verbose_name='roll number 87', default=True)
+    r88 = models.BooleanField(verbose_name='roll number 88', default=True)
+    r89 = models.BooleanField(verbose_name='roll number 89', default=True)
+    r90 = models.BooleanField(verbose_name='roll number 90', default=True)
+    r91 = models.BooleanField(verbose_name='roll number 91', default=True)
+    r92 = models.BooleanField(verbose_name='roll number 92', default=True)
+    r93 = models.BooleanField(verbose_name='roll number 93', default=True)
+    r94 = models.BooleanField(verbose_name='roll number 94', default=True)
+    r95 = models.BooleanField(verbose_name='roll number 95', default=True)
+    r96 = models.BooleanField(verbose_name='roll number 96', default=True)
+    r97 = models.BooleanField(verbose_name='roll number 97', default=True)
+    r98 = models.BooleanField(verbose_name='roll number 98', default=True)
+    r99 = models.BooleanField(verbose_name='roll number 99', default=True)
+    r100 = models.BooleanField(verbose_name='roll number 100', default=True)
