@@ -43,54 +43,57 @@ import logging
 
 logging.config.dictConfig({
 
-   'version':1,
-   'disable_existing_loggers':False,
-   'formatters' : {
-          'console': {
-                'format' : '%(name)-12s %(levelname)-8s %(message)s'
-           },
-           'debug_file': {
-                'format' : '%(asctime)s %(name)-12s %(levelname)-8s %(message)s'
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'console': {
+            'format': '%(name)-12s %(levelname)-8s %(message)s'
+        },
+        'debug_file': {
+            'format': '%(asctime)s %(name)-12s %(levelname)-8s %(message)s'
 
-           }
+        }
     },
 
     'handlers': {
-      'console': {
-           'class' : 'logging.StreamHandler',
-           'formatter' : 'console'
+        'console': {
+            'class': 'logging.StreamHandler',
+            'formatter': 'console'
 
-       },
-       'debug_file': {
-           'level' : 'DEBUG',
-           'class' : 'logging.FileHandler',
-           'formatter' : 'debug_file',
-           'filename' : '/home/csadmin/waise2/env/logs/django_debug.log'  
-       },
+        },
+        'debug_file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'formatter': 'debug_file',
+            # 'filename' : '/home/csadmin/waise2/env/logs/django_debug.log'
+            'filename': '/home/iraa/PycharmProjects/mysite/django_debug.log'
+        },
 
-       'error_file' : {
-           'level' : 'ERROR',
-           'class' : 'logging.FileHandler',
-           'formatter' : 'debug_file',
-           'filename' : '/home/csadmin/waise2/env/logs/django_debug.log'
-  
-       },
-   },
+        'error_file': {
+            'level': 'ERROR',
+            'class': 'logging.FileHandler',
+            'formatter': 'debug_file',
+            # 'filename' : '/home/csadmin/waise2/env/logs/django_debug.log'
+            'filename': '/home/iraa/PycharmProjects/mysite/django_debug.log'
 
-   'loggers': {
-             '':    {
-                  'level' : 'DEBUG',
-                  'handlers' : ['debug_file',]
-              },
-           
-            'a' :  {
-                   'level' : 'ERROR',
-                   'handlers' : ['error_file',]
-               }
-       }
+        },
+    },
+
+    'loggers': {
+        '': {
+            'level': 'DEBUG',
+            'handlers': ['debug_file', ]
+        },
+
+        'a': {
+            'level': 'ERROR',
+            'handlers': ['error_file', ]
+        }
+    }
 })
 
-logger= logging.getLogger(__name__)
+logger = logging.getLogger(__name__)
+
 
 # import PySMS
 #
@@ -100,14 +103,14 @@ logger= logging.getLogger(__name__)
 #
 #     ps.add_number(number="")
 #
-#     ps.text("Welcome to Waise ");
+#     ps.text("Welcome to Waise ") 
 # from .models import Attendence
 
 
 def attendence_calc(request, regno, section, cursem, id):
     # def attendence_list_pdf(request):/
-    logger.info('URL %s calls attendence_calc ',request.get_full_path())
-    logger.info('username %s ' , request.user.username)
+    logger.info('URL %s calls attendence_calc ', request.get_full_path())
+    logger.info('username %s ', request.user.username)
     if request.method == 'GET':
         branch = request.user.dept
 
@@ -118,29 +121,29 @@ def attendence_calc(request, regno, section, cursem, id):
 
         list = RollnoRegnoMap.objects.filter(branch=branch, cursem=cursem, section=section, id=id).order_by('regno', )
 
-        names = [];
+        names = [] 
 
         for student in list:
             names.append(student.name)
 
         print("naems are ", names)
         print("list ", list)
-        list2 = [];
+        list2 = [] 
 
         # list2 = RollnoRegnoMap.objects.filter(bra)
         # print("len list ", len(list))
         # print("zxzx1 ",list[0].name)
         # print("zczcszxzx1 ", list[1].name)
-        total = [];
-        present_total = [];
-        absent_total = [];
-        ptotal = 0;
-        atotal = 0;
-        prev_atotal = 0;
-        prev_ptotal = 0;
-        prev_name = "";
+        total = [] 
+        present_total = [] 
+        absent_total = [] 
+        ptotal = 0 
+        atotal = 0 
+        prev_atotal = 0 
+        prev_ptotal = 0 
+        prev_name = "" 
 
-        # student.ptotal=0;
+        # student.ptotal=0 
         for student in list:
             if student.atotal == -1:
                 atotal = 0
@@ -149,11 +152,11 @@ def attendence_calc(request, regno, section, cursem, id):
                 ptotal = 0
 
             if prev_name == student.name:
-                atotal = prev_atotal;
-                ptotal = prev_ptotal;
+                atotal = prev_atotal 
+                ptotal = prev_ptotal 
             else:
-                atotal = 0;
-                ptotal = 0;
+                atotal = 0 
+                ptotal = 0 
 
             if student.firsthr == "P":
                 ptotal = ptotal + 1
@@ -203,12 +206,12 @@ def attendence_calc(request, regno, section, cursem, id):
             if student.sixthhr == "A":
                 atotal = atotal + 1
 
-            prev_name = student.name;
+            prev_name = student.name 
             prev_ptotal = ptotal
             prev_atotal = atotal
             absent_total.append(atotal)
             total.append(atotal + ptotal)
-            # print("id ",student.id);
+            # print("id ",student.id) 
             RollnoRegnoMap.objects.filter(id=student.id, branch=branch, cursem=cursem, section=section).update(
                 atotal=atotal, ptotal=ptotal, )
 
@@ -239,8 +242,8 @@ def attendence_calc(request, regno, section, cursem, id):
         # html = HTML(string=html_string)
         # doc = html.render()
         # pdf = doc.write_pdf()
-        # pdf['Content-Disposition']='inline;filename:attendem.pdf'
-        # pdf['Content-Disposition'] = 'attachment;filename:attendence.pdf'
+        # pdf['Content-Disposition']='inline filename:attendem.pdf'
+        # pdf['Content-Disposition'] = 'attachment filename:attendence.pdf'
         # return HttpResponse(pdf, content_type='application/pdf')
 
 
@@ -266,21 +269,20 @@ def email(request):
 #     voice.send_sms("+918547485481",'Hello swamys')
 
 
-
 def t(request):
     html_string = render_to_string('student/marklist_pdf_view.html', context)
     html = HTML(string=html_string)
     doc = html.render()
     pdf = doc.write_pdf()
-    pdf['Content-Disposition'] = 'inline;filename:attendence.pdf'
+    pdf['Content-Disposition'] = 'inline filename:attendence.pdf'
     return HttpResponse(pdf, content_type='application/pdf')
 
-    # return render(request,'student/attendence_pdf_view.html');
+    # return render(request,'student/attendence_pdf_view.html') 
 
 
 def pdf_view(request):
     response = HttpResponse(content_type='application/pdf')
-    response['Content-Disposition'] = 'inline;filename="marklist.pdf"'
+    response['Content-Disposition'] = 'inline filename="marklist.pdf"'
     buffer = BytesIO()
     p = canvas.Canvas(buffer)
     p.drawString(100, 100, 'Hello World')
@@ -304,14 +306,14 @@ def StudentCsv(request):
         try:
             csv_file = request.FILES["csv_file"]
             logger.info('URL %s calls StudentCsv ', request.get_full_path())
-            logger.info('username %s ',request.user.username)
+            logger.info('username %s ', request.user.username)
             if not csv_file.name.endswith('.csv'):
-                logger.error('File is not CSV type %s',request.FILES["csv_file"])
+                logger.error('File is not CSV type %s', request.FILES["csv_file"])
                 return HttpResponseRedirect(reverse("student:student_addcsv"))
                 # if file is too large, return
             if csv_file.multiple_chunks():
                 logger.error("Uploaded file is too big (%.2f MB)." % (csv_file.size / (1000 * 1000),))
-                logger.error("filename %s ",request.FILES["csv_file"])
+                logger.error("filename %s ", request.FILES["csv_file"])
                 return HttpResponseRedirect(reverse("student:student_addcsv"))
 
             file_data = csv_file.read().decode("utf-8")
@@ -415,15 +417,15 @@ def MarklistCsv(request):
             # if not GET, then proceed
         try:
             csv_file = request.FILES["csv_file"]
-            logger.info("URL %s calls MarklistCsv ",request.get_full_path())
-            logger,info("username %s ",request.user.username)
+            logger.info("URL %s calls MarklistCsv ", request.get_full_path())
+            logger.info("username %s ", request.user.username)
             if not csv_file.name.endswith('.csv'):
                 logger.error("File is not CSV type %s", request.FILES['csv_file'])
                 return HttpResponseRedirect(reverse("student:student_addcsv"))
                 # if file is too large, return
             if csv_file.multiple_chunks():
                 logger.error("Uploaded file is too big (%.2f MB)." % (csv_file.size / (1000 * 1000),))
-                logger.error("filename %s ",request.FILES["csv_file"])
+                logger.error("filename %s ", request.FILES["csv_file"])
                 return HttpResponseRedirect(reverse("student:student_addcsv"))
 
             file_data = csv_file.read().decode("utf-8")
@@ -498,7 +500,7 @@ def MarklistCsv(request):
 
         except Exception as e:
             logger.error("Unable to upload file. " + repr(e))
-            logger.error("filename %s ",request.FILES["csv_file"])
+            logger.error("filename %s ", request.FILES["csv_file"])
 
         return HttpResponseRedirect(reverse("student:index"))
 
@@ -522,10 +524,10 @@ def AttendenceCsv(request):
             # if not GET, then proceed
         try:
             csv_file = request.FILES["csv_file"]
-            logger.info("URL %s calls AttendenceCsv " ,request.get_full_path())
+            logger.info("URL %s calls AttendenceCsv ", request.get_full_path())
             logger.info("username %s ", request.user.username)
             if not csv_file.name.endswith('.csv'):
-                logger.error('File is not CSV type %s',request.FILES["csv_file"])
+                logger.error('File is not CSV type %s', request.FILES["csv_file"])
                 return HttpResponseRedirect(reverse("student:student_addcsv"))
                 # if file is too large, return
             if csv_file.multiple_chunks():
@@ -585,7 +587,7 @@ def AttendenceCsv(request):
 
         except Exception as e:
             logger.error("Unable to upload file. " + repr(e))
-            logger.error("filename %s ",request.FILES['csv_file'])
+            logger.error("filename %s ", request.FILES['csv_file'])
 
         return HttpResponseRedirect(reverse("student:index"))
 
@@ -611,7 +613,7 @@ def render_to_pdf(request):
             cursem = request.GET['cursem']
             branch = request.GET['branch']
             logger.info("URL %s calls render_to_pdf ", request.get_full_path())
-            logger.info("username %s " , request.user.username)
+            logger.info("username %s ", request.user.username)
             # print("++++++++++++++", request.GET)
 
             list = get_list_or_404(Student, pk=regno)
@@ -690,13 +692,13 @@ def render_to_pdf(request):
             html = HTML(string=html_string)
             doc = html.render()
             pdf = doc.write_pdf()
-            # pdf['Content-Disposition']='inline;filename:marklist.pdf'
+            # pdf['Content-Disposition']='inline filename:marklist.pdf'
             return HttpResponse(pdf, content_type='application/pdf')
 
 
 def pdf_form(request):
     logger.info("URL %s calls pdf_form ", request.get_full_path())
-    logger.info("username %s " , request.user.username)
+    logger.info("username %s ", request.user.username)
     return render(request, 'student/pdf_details.html')
 
 
@@ -707,7 +709,7 @@ def studentdetail_search(request):
             cursem = request.GET['cursem']
             branch = request.GET['branch']
             logger.info("URL %s calls studentdetail_search ", request.get_full_path())
-            logger.info("username %s " , request.user.username)
+            logger.info("username %s ", request.user.username)
             # print("++++++++++++++", request.GET)
 
             list = get_list_or_404(Student, pk=regno)
@@ -743,7 +745,7 @@ def studentdetail_search(request):
                 subl4 = 0
 
             print("sss6 ", marklist[0].subcode6)
-            print(" type ",type(marklist[0].subcode6))
+            print(" type ", type(marklist[0].subcode6))
             # subl1 = Subject_Profile.objects.filter(code=marklist[1].subcodel1)
             # subl2 = Subject_Profile.objects.filter(code=marklist[1].subcodel2)
             #
@@ -794,7 +796,7 @@ def search_form(request):
     if request.user.is_authenticated:
         return render(request, 'student/search_marks_public.html')
     else:
-        return render(request,'student/login.html')
+        return render(request, 'student/login.html')
 
 
 from .forms import UserCsvForm
@@ -813,15 +815,15 @@ def UserCsv(request):
         try:
             csv_file = request.FILES["csv_file"]
             logger.info("URL %s calls UserCsv ", request.get_full_path())
-            logger.info("username %s ",request.user.username)
-            # print("csv file ",csv_file);
+            logger.info("username %s ", request.user.username)
+            # print("csv file ",csv_file) 
             if not csv_file.name.endswith('.csv'):
-                logger.error('File is not CSV type %s ',request.FILES["csv_file"])
+                logger.error('File is not CSV type %s ', request.FILES["csv_file"])
                 return HttpResponseRedirect(reverse("student:user_csv"))
                 # if file is too large, return
             if csv_file.multiple_chunks():
                 logger.error("Uploaded file is too big (%.2f MB)." % (csv_file.size / (1000 * 1000),))
-                logger.error("filename %s ",request.FILES['csv_file'])
+                logger.error("filename %s ", request.FILES['csv_file'])
                 return HttpResponseRedirect(reverse("student:user_csv"))
 
             file_data = csv_file.read().decode("utf-8")
@@ -869,7 +871,7 @@ def UserCsv(request):
 
         except Exception as e:
             logger.error("Unable to upload file. " + repr(e))
-            logger.error("filename %s ",request.FILES["csv_file"])
+            logger.error("filename %s ", request.FILES["csv_file"])
 
         return HttpResponseRedirect(reverse("student:index"))
 
@@ -884,9 +886,9 @@ def UserCreate(request):
             name='Admin').exists() or request.user.groups.filter(name='HOD'):
 
         student = UserCsvForm(request.POST or None)
-        logger.info("URL %s calls UserCreate ",request.get_full_path())
-        logger.info("username %s ",request.user.username)
-        # print("form ",student);
+        logger.info("URL %s calls UserCreate ", request.get_full_path())
+        logger.info("username %s ", request.user.username)
+        # print("form ",student) 
         if student.is_valid():
             instance = student.save(commit=False)
             instance.branch = request.user.dept
@@ -909,8 +911,8 @@ def UserCreate(request):
 
 def home(request):
     if request.user.is_authenticated:
-        logger.info("URL %s calls home() ",request.get_full_path())
-        logger.info("username %s ",request.user.username)
+        logger.info("URL %s calls home() ", request.get_full_path())
+        logger.info("username %s ", request.user.username)
         return render(request, 'student/home.html')
     else:
         return render(request, 'student/login.html')
@@ -933,15 +935,15 @@ def loguser(request):
                 if user is not None:
                     if user.is_active:
                         login(request, user)
-                        logger.info('%s has logged in ',uname)
-                        logger.info('username %s',request.user.username)
+                        logger.info('%s has logged in ', uname)
+                        logger.info('username %s', request.user.username)
                         if user.groups.filter(name='Student'):
                             return HttpResponseRedirect('/student/public_form/')
                         else:
                             return HttpResponseRedirect('/student/home/')
             else:
                 context = {'error': "Login credentials are invalid"}
-                logger.error('%s failed to login ',uname)
+                logger.error('%s failed to login ', uname)
 
                 return render(request, 'student/login.html', context)
 
@@ -954,7 +956,7 @@ from django.contrib.auth import login, logout
 
 
 def logoutuser(request):
-    logger.info(" %s logged out",request.user.username)
+    logger.info(" %s logged out", request.user.username)
     logout(request)
     return redirect('/student/')
 
@@ -979,8 +981,8 @@ class DetailView(generic.DetailView):
 
 # prints student details
 def student_report(request, regno, branch, cursem):
-    logger.info("URL %s calls student_report ",request.get_full_path())
-    logger.info("username %s ",request.user.username)
+    logger.info("URL %s calls student_report ", request.get_full_path())
+    logger.info("username %s ", request.user.username)
     list = get_list_or_404(Student, pk=regno, cursem=cursem)
     marklist = get_list_or_404(Marklist, regno=regno, branch=branch, cursem=cursem)
     sub1 = get_object_or_404(Subject_Profile, code=marklist[0].subcode1)
@@ -994,7 +996,7 @@ def student_report(request, regno, branch, cursem):
     # sub3 = Subject_Profile.objects.filter(code=marklist[1].subcode3)
     # sub4 = Subject_Profile.objects.filter(code=marklist[1].subcode4)
     #
-    # print("dvsvvsvv ",marklist[0]);
+    # print("dvsvvsvv ",marklist[0]) 
 
     if marklist[0].subcode5 != 0:
 
@@ -1062,8 +1064,8 @@ def student_report(request, regno, branch, cursem):
 
 
 def detail(request, regno):
-    logger.info("URL %s calls detail() ",request.get_full_path())
-    logger.info("username %s ",request.user.username)
+    logger.info("URL %s calls detail() ", request.get_full_path())
+    logger.info("username %s ", request.user.username)
     list = get_list_or_404(Student, pk=regno)
     marklist = get_list_or_404(Marklist, regno=regno)
 
@@ -1079,8 +1081,8 @@ def StudentCreate(request):
             name='Admin').exists() or request.user.groups.filter(name='HOD'):
 
         student = Studentmodelform(request.POST or None)
-        logger.info("URL %s calls StudentCreate() ",request.get_full_path())
-        logger.info("username %s ",request.user.username)
+        logger.info("URL %s calls StudentCreate() ", request.get_full_path())
+        logger.info("username %s ", request.user.username)
         if student.is_valid():
             instance = student.save(commit=False)
             instance.branch = request.user.dept
@@ -1121,8 +1123,8 @@ def searchs(request):
             student = Student.objects.filter(regno__icontains=num, name__icontains=name, branch__icontains=branch)
             students = get_list_or_404(Student, branch__icontains=branch)
             # marks = Marklist.objects.filter(regno_id__icontains=num)
-            logger.info("URL %s calls searchs() ",request.get_full_path())
-            logger.info("username %s ",request.user.username)
+            logger.info("URL %s calls searchs() ", request.get_full_path())
+            logger.info("username %s ", request.user.username)
             marks = get_list_or_404(Marklist, regno_id__regno__icontains=num)
             context = {'list': student,
                        'marks': marks,
@@ -1143,8 +1145,8 @@ def searchs(request):
 
 def Studentsearch(request):
     # searchs(request)
-    logger.info("URL %s calls Studentsearch() ",request.get_full_path())
-    logger.info("username %s ",request.user.username)
+    logger.info("URL %s calls Studentsearch() ", request.get_full_path())
+    logger.info("username %s ", request.user.username)
     return render(request, 'student/search_student.html')
 
 
@@ -1157,8 +1159,8 @@ def searchmarks(request):
             branch = request.user.dept
             section = request.GET['section']
             type = request.GET['type']
-            logger.info("URL %s calls searchmarks() ",request.get_full_path())
-            logger.info("username %s ",request.user.username)
+            logger.info("URL %s calls searchmarks() ", request.get_full_path())
+            logger.info("username %s ", request.user.username)
 
             print("req dept ", request.user.dept)
 
@@ -1217,8 +1219,8 @@ def Studentform_edit(request, regno):  # working well with register number only
         'mark1', 'mark2', 'mark3', 'mark4', 'mark5', 'mark6', 'markl1', 'markl2',
         'markl3', 'markl4',))
     queryset = Marklist.objects.filter(regno=regno)
-    logger.info("URL %s calls Studentform_edit() ",request.get_full_path())
-    logger.info("username %s ",request.user.username)
+    logger.info("URL %s calls Studentform_edit() ", request.get_full_path())
+    logger.info("username %s ", request.user.username)
     formset = studentformset(request.POST or None, queryset=queryset)
     # studentformset()
     # print(request.POST)
@@ -1237,8 +1239,8 @@ def Studentform_edit(request, regno):  # working well with register number only
 
 
 def Marklistsearch(request):
-    logger.info("URL %s calls Marklistsearch() ",request.get_full_path())
-    logger.info("username %s ",request.user.username)
+    logger.info("URL %s calls Marklistsearch() ", request.get_full_path())
+    logger.info("username %s ", request.user.username)
     return render(request, 'student/marklist_search.html')
 
 
@@ -1249,8 +1251,8 @@ def Studentform(request):
     # marklist=Marklist.objects.all()
     # regno_id__regno__icontains = num
     marklist = Marklist.filter(regno__icontains=regno)
-    logger.info("URL %s calls Studentform() ",request.get_full_path())
-    logger.info("username %s ",request.user.username)
+    logger.info("URL %s calls Studentform() ", request.get_full_path())
+    logger.info("username %s ", request.user.username)
 
     newform = StudentForm(request.POST or None, instance=marklist)
     if newform.is_valid():
@@ -1304,8 +1306,8 @@ class UserFormView(View):
 
     def post(self, request):
         form = self.form_class(request.POST)
-        logger.info("URL %s calls UserFormView() ",request.get_full_path())
-        logger.info("username %s ",request.user.username)
+        logger.info("URL %s calls UserFormView() ", request.get_full_path())
+        logger.info("username %s ", request.user.username)
         if form.is_valid():
             user = form.save(commit=False)
 
@@ -1361,8 +1363,8 @@ def AttendenceUpdate(request, regno, cursem, section, id):
             name='Admin') or request.user.groups.filter(name='HOD'):
         instance = get_object_or_404(RollnoRegnoMap, cursem=cursem, section=section, regno=regno, id=id)
         student = RollnoRegnoMapEditForm(request.POST or None, instance=instance)
-        logger.info("URL %s calls home() ",request.get_full_path())
-        logger.info("username %s ",request.user.username)
+        logger.info("URL %s calls home() ", request.get_full_path())
+        logger.info("username %s ", request.user.username)
         if student.is_valid():
             instance = student.save(commit=False)
             instance.save()
@@ -1418,8 +1420,8 @@ def marklist_search(request):
             # page=request.GET.get('page',1)
 
             # student_filter = StudentFilter(request.GET, queryset=marklist_list)
-            logger.info("URL %s calls marklist_search() ",request.get_full_path())
-            logger.info("username %s ",request.user.username)
+            logger.info("URL %s calls marklist_search() ", request.get_full_path())
+            logger.info("username %s ", request.user.username)
 
             marklist_list = Marklist.objects.filter(branch=request.user.dept).order_by('regno')
 
@@ -1451,8 +1453,8 @@ def student_search(request):
             student_list = Student.objects.filter(branch=request.user.dept).order_by('regno')
             # page=request.GET.get('page',1)
             student_filter = StudentFilter(request.GET, queryset=student_list)
-            logger.info("URL %s calls student_search() ",request.get_full_path())
-            logger.info("username %s ",request.user.username)
+            logger.info("URL %s calls student_search() ", request.get_full_path())
+            logger.info("username %s ", request.user.username)
 
             # marklist = Marklist.objects.filter(regno=student_list)
 
@@ -1467,7 +1469,6 @@ def student_search(request):
             #     students=paginator.page(1)
             # except EmptyPage:
             #     students=paginator.page(paginator.num_pages)
-
 
             # print("student ")
             return render(request, 'student/student_list.html', {'filter': student_filter, })
@@ -1488,8 +1489,8 @@ def faculty_search(request):
     if request.user.groups.filter(name='Dataop') or request.user.groups.filter(name='Admin'):
         faculty_list = Faculty.objects.filter(dept=request.user.dept)
         faculty_filter = FacultyFilter(request.GET, queryset=faculty_list)
-        logger.info("URL %s calls faculty_search() ",request.get_full_path())
-        logger.info("username %s ",request.user.username)
+        logger.info("URL %s calls faculty_search() ", request.get_full_path())
+        logger.info("username %s ", request.user.username)
 
         context = {
             'filter': faculty_filter,
@@ -1513,8 +1514,8 @@ def facultysubject_search(request):
     if request.user.groups.filter(name='Dataop') or request.user.groups.filter(name='Admin'):
 
         faculty_list = FacultySubject.objects.all()
-        logger.info("URL %s calls facultysubject_search() ",request.get_full_path())
-        logger.info("username %s ",request.user.username)
+        logger.info("URL %s calls facultysubject_search() ", request.get_full_path())
+        logger.info("username %s ", request.user.username)
         faculty_filter = FacultySubjectFilter(request.GET, queryset=faculty_list)
         context = {'filter': faculty_filter,
                    'title': 'Faculty Subjectmap Search',
@@ -1528,8 +1529,8 @@ def facultysubject_search(request):
 
 
 class Facultyview(generic.ListView):
-    #logger.info("URL %s calls Facultyview() ",request.get_full_path())
-    #logger.info("username %s ",request.user.username)
+    # logger.info("URL %s calls Facultyview() ",request.get_full_path())
+    # logger.info("username %s ",request.user.username)
     template_name = 'student/facultyindex.html'
     context_object_name = 'object_list'
     context_object_name = 'object_list'
@@ -1539,8 +1540,8 @@ class Facultyview(generic.ListView):
 
 
 def FacultyDetail(request, pk):
-    logger.info("URL %s calls FacultyDetail() ",request.get_full_path())
-    logger.info("username %s ",request.user.username)
+    logger.info("URL %s calls FacultyDetail() ", request.get_full_path())
+    logger.info("username %s ", request.user.username)
     list = get_list_or_404(Faculty, pk=pk)
 
     context = {'list': list,
@@ -1556,8 +1557,8 @@ from .forms import Facultymodelform
 def FacultyCreate(request):
     if request.user.groups.filter(name='Dataop') or request.user.groups.filter(name='Admin'):
         faculty = Facultymodelform(request.POST or None)
-        logger.info("URL %s calls FacultyCreate() ",request.get_full_path())
-        logger.info("username %s ",request.user.username)
+        logger.info("URL %s calls FacultyCreate() ", request.get_full_path())
+        logger.info("username %s ", request.user.username)
         # print(faculty)
         if faculty.is_valid():
             instance = faculty.save(commit=False)
@@ -1611,8 +1612,8 @@ def Facultyupdate(request, pk):
     if request.user.groups.filter(name='Dataop').exists() or request.user.groups.filter(name='Admin').exists():
 
         instance = get_object_or_404(Faculty, empid=pk)
-        logger.info("URL %s calls Facultyupdate() ",request.get_full_path())
-        logger.info("username %s ",request.user.username)
+        logger.info("URL %s calls Facultyupdate() ", request.get_full_path())
+        logger.info("username %s ", request.user.username)
         print("instance ", instance)
         faculty = Facultymodelform(request.POST or None, request.FILES or None, instance=instance)
         if faculty.is_valid():
@@ -1631,7 +1632,6 @@ def Facultyupdate(request, pk):
 
         return render(request, 'student/login.html', context)
 
-
         # class Facultyupdate(UpdateView):
         #   model = Faculty
         #  fields = '__all__'
@@ -1647,8 +1647,8 @@ class Facultydelete(DeleteView):
 
 @login_required()
 def SubjectsList(request):
-    logger.info("URL %s calls SubjectsList() ",request.get_full_path())
-    logger.info("username %s ",request.user.username)
+    logger.info("URL %s calls SubjectsList() ", request.get_full_path())
+    logger.info("username %s ", request.user.username)
     sublist = Subject_Profile.objects.all()
     context = {'list': sublist, }
     return render(request, 'student/subjectdetail.html', context)
@@ -1658,8 +1658,9 @@ def SubjectsList(request):
 class FacultySubMapview(generic.ListView):
     template_name = 'student/facultysubmapindex.html'
     context_object_name = 'object_list'
-    #logger.info("URL %s calls FacultySubMapview() ",request.get_full_path())
-    #logger.info("username %s ",request.user.username)
+
+    # logger.info("URL %s calls FacultySubMapview() ",request.get_full_path())
+    # logger.info("username %s ",request.user.username)
 
     def get_queryset(self):
         return FacultySubject.objects.all()
@@ -1673,8 +1674,8 @@ def FacultySubMapCreate(request):
     if request.user.groups.filter(name='Dataop') or request.user.groups.filter(
             name='Admin') or request.user.groups.filter(name='Faculty'):
         submap = FacultySubjectMapAddForm(request.POST or None)
-        logger.info("URL %s calls FacultySubMapCreate() ",request.get_full_path())
-        logger.info("username %s ",request.user.username)
+        logger.info("URL %s calls FacultySubMapCreate() ", request.get_full_path())
+        logger.info("username %s ", request.user.username)
         if submap.is_valid():
             instance = submap.save(commit=False)
             # print(instance.branch)
@@ -1701,8 +1702,8 @@ def FacultySubMapCreate(request):
     lambda u: u.groups.filter(name='Dataop').exists() or u.groups.filter(name='Faculty').exists() or u.groups.filter(
         name='Admin').exists() or u.groups.filter(name='HOD').exists(), )
 class FacultySubMapEdit(UpdateView):
-    #logger.info("URL %s calls FacultySubMapEdit() ",request.get_full_path())
-    #logger.info("username %s ",request.user.username)
+    # logger.info("URL %s calls FacultySubMapEdit() ",request.get_full_path())
+    # logger.info("username %s ",request.user.username)
     model = FacultySubject
     fields = '__all__'
     success_url = reverse_lazy('student:faculty_show')
@@ -1751,8 +1752,8 @@ def MarklistCreate(request):
         # queryset=Marklist.objects.filter(branch=request.user.dept)
         # MarklistForm(user=request.user)
         # print("----------------",request.POST)
-        logger.info("URL %s calls MarklistCreate() ",request.get_full_path())
-        logger.info("username %s ",request.user.username)
+        logger.info("URL %s calls MarklistCreate() ", request.get_full_path())
+        logger.info("username %s ", request.user.username)
         marklist = MarklistForm(request.POST or None)
         if marklist.is_valid():
             if request.POST['type'] == 'External':
@@ -1763,7 +1764,8 @@ def MarklistCreate(request):
                 cursem = request.POST['cursem']
                 branch = request.user.dept
 
-                student_int = Marklist.objects.get(regno=regno, chance=chance, type='Internal', cursem=cursem,branch=branch)
+                student_int = Marklist.objects.get(regno=regno, chance=chance, type='Internal', cursem=cursem,
+                                                   branch=branch)
 
                 instance = marklist.save(commit=False)
 
@@ -1808,13 +1810,12 @@ def MarklistCreate(request):
         return render(request, 'student/login.html', context)
 
 
-
 def StudentUpdate(request, pk):
     instance = get_object_or_404(Student, regno=pk)
     student = Studentupdateform(request.POST or None, request.FILES or None, instance=instance)
     print("errr ", student.errors)
-    logger.info("URL %s calls StudentUpdate() ",request.get_full_path())
-    logger.info("username %s ",request.user.username)
+    logger.info("URL %s calls StudentUpdate() ", request.get_full_path())
+    logger.info("username %s ", request.user.username)
     if student.is_valid():
         instance = student.save(commit=False)
         instance.save()
@@ -1835,8 +1836,8 @@ def MarklistUpdate(request, regno, branch, cursem, section, type):
 
         instance = get_object_or_404(Marklist, regno=regno, cursem=cursem, branch=branch, section=section, type=type)
         student = MarklistForm(request.POST or None, instance=instance)
-        logger.info("URL %s calls MarklistUpdate() ",request.get_full_path())
-        logger.info("username %s ",request.user.username)
+        logger.info("URL %s calls MarklistUpdate() ", request.get_full_path())
+        logger.info("username %s ", request.user.username)
         if student.is_valid():
             if request.POST['type'] == 'External':
                 chance = request.POST['chance']
@@ -1844,7 +1845,7 @@ def MarklistUpdate(request, regno, branch, cursem, section, type):
                 branch = request.user.dept
 
                 student_int = Marklist.objects.get(regno=regno, chance=chance, type='Internal', cursem=cursem,
-                                               branch=branch)
+                                                   branch=branch)
 
                 instance = student.save(commit=False)
                 instance.mark1 = instance.mark1 - student_int.mark1
@@ -1858,9 +1859,9 @@ def MarklistUpdate(request, regno, branch, cursem, section, type):
                 instance.markl3 = instance.markl3 - student_int.markl3
                 instance.markl4 = instance.markl4 - student_int.markl4
 
-            # print("insta",instance.mark1)
+                # print("insta",instance.mark1)
                 instance.branch = branch
-            # # print(instance.branch)
+                # # print(instance.branch)
 
                 instance.save()
                 return render(request, 'student/home.html')
@@ -1868,16 +1869,16 @@ def MarklistUpdate(request, regno, branch, cursem, section, type):
             else:
                 # print("else")
                 instance = student.save(commit=False)
-            # print(instance.mark1)
+                # print(instance.mark1)
                 instance.branch = request.user.dept
-            # print(instance.branch)
+                # print(instance.branch)
 
                 instance.save()
                 return render(request, 'student/home.html')
 
         context = {
-        "form": student,
-        "title": 'Edit Marklist',
+            "form": student,
+            "title": 'Edit Marklist',
 
         }
 
@@ -1899,8 +1900,8 @@ def Subject_ProfileCreate(request):
     if request.user.groups.filter(name='Dataop') or request.user.groups.filter(name='Admin'):
 
         subject_profile = SubjectProfileAddForm(request.POST or None)
-        logger.info("URL %s calls Subject_ProfileCreate() ",request.get_full_path())
-        logger.info("username %s ",request.user.username)
+        logger.info("URL %s calls Subject_ProfileCreate() ", request.get_full_path())
+        logger.info("username %s ", request.user.username)
         if subject_profile.is_valid():
             instance = subject_profile.save(commit=False)
             instance.branch = request.user.dept
@@ -1924,8 +1925,8 @@ def SyllabusCreate(request):
     if request.user.groups.filter(name='Dataop') or request.user.groups.filter(name='Admin'):
 
         syllabus = Syllabusmodelform(request.POST or None)
-        logger.info("URL %s calls SyllabusCreate() ",request.get_full_path())
-        logger.info("username %s ",request.user.username)
+        logger.info("URL %s calls SyllabusCreate() ", request.get_full_path())
+        logger.info("username %s ", request.user.username)
         if syllabus.is_valid():
             instance = syllabus.save(commit=False)
             # print(instance.branch)
@@ -1948,8 +1949,8 @@ def SyllabusCreate(request):
 
 
 class Subject_ProfileEdit(UpdateView):
-    #logger.info("URL %s calls Subject_ProfileEdit() ",request.get_full_path())
-    #logger.info("username %s ",request.user.username)
+    # logger.info("URL %s calls Subject_ProfileEdit() ",request.get_full_path())
+    # logger.info("username %s ",request.user.username)
     model = Subject_Profile
     fields = '__all__'
     success_url = reverse_lazy('student:index')
@@ -1967,8 +1968,8 @@ def syllabus_search(request):
     if request.user.groups.filter(name='Dataop') or request.user.groups.filter(name='Admin'):
 
         syllabus_list = Syllabus.objects.all().order_by('dept')
-        logger.info("URL %s calls syllabus_search() ",request.get_full_path())
-        logger.info("username %s ",request.user.username)
+        logger.info("URL %s calls syllabus_search() ", request.get_full_path())
+        logger.info("username %s ", request.user.username)
         syllabus_filter = SyllabusFilter(request.GET, queryset=syllabus_list)
 
         return render(request, 'student/syllabus_list.html', {'filter': syllabus_filter})
@@ -2000,8 +2001,8 @@ from .forms import Syllabusmodelform, MarklistUpdateForm
 
 def StudentUpdate(request, pk):
     instance = get_object_or_404(Student, regno=pk)
-    logger.info("URL %s calls StudentUpdate() ",request.get_full_path())
-    logger.info("username %s ",request.user.username)
+    logger.info("URL %s calls StudentUpdate() ", request.get_full_path())
+    logger.info("username %s ", request.user.username)
     student = Studentupdateform(request.POST or None, request.FILES or None, instance=instance)
     if student.is_valid():
         instance = student.save(commit=False)
@@ -2030,8 +2031,8 @@ from .forms import Syllabusupdateform
 def SyllabusEdit(request, pk):
     if request.user.groups.filter(name='Dataop') or request.user.groups.filter(name='Admin'):
         instance = get_object_or_404(Syllabus, id=pk)
-        logger.info("URL %s calls SyllabusEdit() ",request.get_full_path())
-        logger.info("username %s ",request.user.username)
+        logger.info("URL %s calls SyllabusEdit() ", request.get_full_path())
+        logger.info("username %s ", request.user.username)
         syllabus = Syllabusupdateform(request.POST or None, instance=instance)
         if syllabus.is_valid():
             instance = syllabus.save(commit=False)
@@ -2053,8 +2054,8 @@ def SyllabusEdit(request, pk):
 
 def SyllabusDetail(request, regno):
     list = get_list_or_404(Syllabus, pk=regno)
-    logger.info("URL %s calls SyllabusDetail() ",request.get_full_path())
-    logger.info("username %s ",request.user.username)
+    logger.info("URL %s calls SyllabusDetail() ", request.get_full_path())
+    logger.info("username %s ", request.user.username)
     # marklist=get_list_or_404(Marklist,pk=regno)
 
     context = {'list': list,
@@ -2073,8 +2074,8 @@ def subjectprofileview(request, id):
         # syllabus = Subject_Profile.objects.filter(syllabussubid=id)
         subjects = get_list_or_404(Subject_Profile, syllabussubid_id__id__icontains=id)
         syllabus_name = get_list_or_404(Syllabus, id__iexact=id)
-        logger.info("URL %s calls subjectprofileview() ",request.get_full_path())
-        logger.info("username %s ",request.user.username)
+        logger.info("URL %s calls subjectprofileview() ", request.get_full_path())
+        logger.info("username %s ", request.user.username)
 
         context = {'list': subjects,
                    'syllabus': syllabus_name,
@@ -2097,8 +2098,8 @@ def subjectprofileedit(request, id):
     queryset = Subject_Profile.objects.filter(syllabussubid_id__id__icontains=id).order_by('code')
     values = get_list_or_404(Subject_Profile, syllabussubid_id=id)
     syllabus_name = get_list_or_404(Syllabus, id=id)
-    logger.info("URL %s calls subjectprofileedit() ",request.get_full_path())
-    logger.info("username %s ",request.user.username)
+    logger.info("URL %s calls subjectprofileedit() ", request.get_full_path())
+    logger.info("username %s ", request.user.username)
     formset = subjectprofileformset(request.POST or None, queryset=queryset)
     # print("+++++++++++++++++++", values)
     if formset.is_valid():
@@ -2122,8 +2123,8 @@ from .forms import RollnoRegnoMapAddForm
 
 def RollnoRegnoMapAdd(request):
     form = RollnoRegnoMapAddForm(request.POST or None)
-    logger.info("URL %s calls RollnoRegnoMapAdd() ",request.get_full_path())
-    logger.info("username %s ",request.user.username)
+    logger.info("URL %s calls RollnoRegnoMapAdd() ", request.get_full_path())
+    logger.info("username %s ", request.user.username)
 
     if form.is_valid():
         instance = form.save(commit=False)
@@ -2139,8 +2140,6 @@ def RollnoRegnoMapAdd(request):
 # def RollnoRegnoMapEdit(request):
 
 
-
-
 from .models import RollnoRegnoMap
 
 from .filters import AttendenceFilter
@@ -2149,8 +2148,8 @@ from .forms import SubjectProfileForm, RollnoRegnoMapEditForm
 
 
 def attendenceedit(request, year, branch, cursem, section):
-    logger.info("URL %s calls attendenceedit() ",request.get_full_path())
-    logger.info("username %s ",request.user.username)
+    logger.info("URL %s calls attendenceedit() ", request.get_full_path())
+    logger.info("username %s ", request.user.username)
     subjectprofileformset = modelformset_factory(RollnoRegnoMap, form=RollnoRegnoMapEditForm, extra=0)
     queryset = RollnoRegnoMap.objects.filter(year=year, cursem=cursem, branch=branch, section=section)
     # regno_list = RollnoRegnoMap.objects.filter(id__icontains=id).order_by('rollno').values_list('regno')
@@ -2202,8 +2201,8 @@ def syllabus_search(request):
 
         syllabus_list = Syllabus.objects.filter(dept=request.user.dept).order_by('dept')
         syllabus_filter = SyllabusFilter(request.GET, queryset=syllabus_list)
-        logger.info("URL %s calls syllabus_search() ",request.get_full_path())
-        logger.info("username %s ",request.user.username)
+        logger.info("URL %s calls syllabus_search() ", request.get_full_path())
+        logger.info("username %s ", request.user.username)
         context = {
             'filter': syllabus_filter,
             'title': 'Syllabus Search',
@@ -2229,17 +2228,17 @@ def attendence_list_pdf(request):
         section = request.GET['section']
         facultyid = request.GET['facultyid']
         subcode = request.GET['subcode']
-        logger.info("URL %s calls attendence_list_pdf() ",request.get_full_path())
-        logger.info("username %s ",request.user.username)
+        logger.info("URL %s calls attendence_list_pdf() ", request.get_full_path())
+        logger.info("username %s ", request.user.username)
 
-        total = [];
-        present_total = [];
-        absent_total = [];
-        ptotal = 0;
-        atotal = 0;
-        prev_atotal = 0;
-        prev_ptotal = 0;
-        prev_name = "";
+        total = [] 
+        present_total = [] 
+        absent_total = [] 
+        ptotal = 0 
+        atotal = 0 
+        prev_atotal = 0 
+        prev_ptotal = 0 
+        prev_name = "" 
 
         list = RollnoRegnoMap.objects.filter(branch=branch, cursem=cursem, section=section).order_by('regno', )
 
@@ -2251,11 +2250,11 @@ def attendence_list_pdf(request):
                 ptotal = 0
 
             if prev_name == student.name:
-                atotal = prev_atotal;
-                ptotal = prev_ptotal;
+                atotal = prev_atotal 
+                ptotal = prev_ptotal 
             else:
-                atotal = 0;
-                ptotal = 0;
+                atotal = 0 
+                ptotal = 0 
 
             if student.firsthr == "P":
                 ptotal = ptotal + 1
@@ -2305,12 +2304,12 @@ def attendence_list_pdf(request):
             if student.sixthhr == "A":
                 atotal = atotal + 1
 
-            prev_name = student.name;
+            prev_name = student.name 
             prev_ptotal = ptotal
             prev_atotal = atotal
             absent_total.append(atotal)
             total.append(atotal + ptotal)
-            # print("id ",student.id);
+            # print("id ",student.id) 
             RollnoRegnoMap.objects.filter(id=student.id, branch=branch, cursem=cursem, section=section).update(
                 atotal=atotal, ptotal=ptotal, )
 
@@ -2341,38 +2340,38 @@ def attendence_list_pdf(request):
         # writer.writerow(report_line)
         # report = f.getvalue()
         # resp = HttpResponse(report, mimetype="application/octet-stream")
-        # resp["Content-Disposition"] = "attachment; filename='{}'".format("report.csv")
+        # resp["Content-Disposition"] = "attachment  filename='{}'".format("report.csv")
         # return resp
 
         # html_string = render_to_string('student/attendence_pdf_view.html', context)
         # html = HTML(string=html_string)
         # doc = html.render()
         # pdf = doc.write_pdf()
-        # # pdf['Content-Disposition']='inline;filename:attendem.pdf'
-        # # pdf['Content-Disposition'] = 'attachment;filename:attendence.pdf'
+        # # pdf['Content-Disposition']='inline filename:attendem.pdf'
+        # # pdf['Content-Disposition'] = 'attachment filename:attendence.pdf'
         # return HttpResponse(pdf, content_type='application/pdf')
 
         # return render(request, 'student/attendence_pdf_view.html', context)
 
 
 def attendence_pdf(request):
-    logger.info("URL %s calls attendence_pdf()",request.get_full_path())
-    logger.info("username %s ",request.user.username)
+    logger.info("URL %s calls attendence_pdf()", request.get_full_path())
+    logger.info("username %s ", request.user.username)
     return render(request, 'student/attendence_pdf_search.html')
 
 
 @login_required()
 def attendence_search(request):
     # print("ddd ",request.user.first_name)
-    faculty = None;
+    faculty = None 
     if request.user.groups.filter(name='Dataop') or request.user.groups.filter(
             name='Admin') or request.user.groups.filter(name='Faculty'):
 
         if request.method == "GET":
 
             attendence_list = RollnoRegnoMap.objects.all().order_by('cursem', 'rollno', 'time')
-            logger.info("URL %s calls attendence_search() ",request.get_full_path())
-            logger.info("username %s ",request.user.username)
+            logger.info("URL %s calls attendence_search() ", request.get_full_path())
+            logger.info("username %s ", request.user.username)
             attendence_filter = AttendenceFilter(request.GET, queryset=attendence_list)
 
             # print("req data111 ", request.GET['subcode'])
@@ -2381,10 +2380,9 @@ def attendence_search(request):
             # print("********** ",request.GET['facultyid'])
             # subcode = request.GET['subjectcode']
 
-
             if request.user.groups.filter(name='Faculty'):
                 faculty = Faculty.objects.filter(ename=request.user.first_name)
-            # print("ss ",faculty[0].empid);
+            # print("ss ",faculty[0].empid) 
 
             return render(request, 'student/rollnoregnomap_list.html', {'filter': attendence_filter,
                                                                         'title': 'Search Attendence',
