@@ -67,16 +67,16 @@ logging.config.dictConfig({
             'level': 'DEBUG',
             'class': 'logging.FileHandler',
             'formatter': 'debug_file',
-            # 'filename' : '/home/csadmin/waise2/env/logs/django_debug.log'
-            'filename': '/home/iraa/PycharmProjects/mysite/django_debug.log'
+            'filename' : '/home/csadmin/waise2/env/logs/django_debug.log'
+            # 'filename': '/home/iraa/PycharmProjects/mysite/django_debug.log'
         },
 
         'error_file': {
             'level': 'ERROR',
             'class': 'logging.FileHandler',
             'formatter': 'debug_file',
-            # 'filename' : '/home/csadmin/waise2/env/logs/django_debug.log'
-            'filename': '/home/iraa/PycharmProjects/mysite/django_debug.log'
+            'filename' : '/home/csadmin/waise2/env/logs/django_debug.log'
+            #'filename': '/home/iraa/PycharmProjects/mysite/django_debug.log'
 
         },
     },
