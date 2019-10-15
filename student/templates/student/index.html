@@ -1,0 +1,21 @@
+{% extends 'student/base.html' %}
+{% block body %}
+
+<h1>Hello {{ request.user.username }} Of {{ request.user.dept }} Department with access level
+     {{ request.user.accesslvl }}
+  </h1>
+
+<h2>Students Allocated </h2>
+  <ul>
+      {%for i in object_list %}
+      <li><a href="{% url 'student:views' i.regno %}">{{ i.name }} </a>&nbsp&nbsp&nbsp
+          <a href="{% url 'student:detail' i.regno %}">Edit</a>&nbsp&nbsp&nbsp
+          {% if request.user.accesslvl == 4 %}
+          <a href="{% url 'student:delete' i.regno %}">Delete </a>
+          {% endif %}
+      </li>
+      {%endfor %}
+  </ul>
+
+
+{% endblock %}

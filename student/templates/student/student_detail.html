@@ -1,0 +1,47 @@
+{% extends 'student/base.html'%}
+{% block body %}
+
+
+   <body>
+
+
+   {% for i in object_list %}
+  <!--<h1>Welcome student {{i.name}}</h1>-->
+
+  <h1>Details of {{i.name}}</h1>
+
+
+  <ul>
+      <label>Register Number :</label>    <td><tr>{{i.regno}}</tr></td>
+  </ul>
+
+  <ul>
+
+      <label> Student Name :</label>      <td> <tr>{{i.name}}</tr></td>
+  </ul>
+
+    <ul>
+     <label> Branch  :</label>     {{i.branch}}
+  </ul>
+
+    <ul>
+     <label> Current Semester :</label>     {{i.cursem}}
+  </ul>
+
+    <ul>
+
+     <label> Year of Join :</label>     {{i.join}}
+  </ul>
+
+    <ul>
+     <label> Section :</label>     {{i.section}}
+  </ul>
+
+
+<!--{#    <a href="/delete/{%i.regno%}" >Delete Student</a>#}  -->
+   {% endfor %}
+
+
+{% endblock %}
+</body>
+
