@@ -13,8 +13,7 @@ admin.site.site_url='/student/'
 class CustomUserAdmin(UserAdmin):
     add_form = CustomUserCreationForm
     form = CustomUserChangeForm
-    model = CustomUser
-    list_display = ['username','email','dept']
+    list_display = ['username']#,'email','dept']
     # add_fieldsets = 'dept'
 
 

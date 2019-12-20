@@ -50,7 +50,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
             ('ME', 'Mechanical Engineering'))
 
     username_validator = UnicodeUsernameValidator()
-
+    category = models.CharField(max_length=20, default='General')
     username = models.CharField(
         max_length=150,
         unique=True,
@@ -165,10 +165,10 @@ class Student(models.Model):
                                               blank=True)
     catrank = models.IntegerField(verbose_name='CAT Rank', default='0')
     religion = models.CharField(max_length=15, null=True, blank=True)
-    bloodgroup = models.CharField(max_length=6, verbose_name='Blood Group', choices=BLOODGROUPS)
+    bloodgroup = models.CharField(max_length=6, verbose_name='Blood Group', choices=BLOODGROUPS, null=True, blank=True)
 
     parentorguardianname = models.CharField(max_length=50, verbose_name='Parent/Guardians Name', null=True, blank=True)
-    parentorguardianoccupation = models.CharField(max_length=15, verbose_name='Parent/Guardians Occupation', null=True,
+    parentorguardianoccupation = models.CharField(max_length=25, verbose_name='Parent/Guardians Occupation', null=True,
                                                   blank=True)
     parentorguardiancontactno = models.CharField(max_length=15, verbose_name='Parent/Guardians Contact No', null=True,
                                                  blank=True)
@@ -183,9 +183,9 @@ class Student(models.Model):
     studentemailid = models.CharField(max_length=50, verbose_name='Students Email Id', null=True, blank=True)
 
     tenboard = models.CharField(max_length=20, verbose_name='10th Board', null=True, blank=True)
-    tenregisterno = models.IntegerField(verbose_name='10th Register No', null=True, blank=True)
+    tenregisterno = models.CharField(max_length=20, verbose_name='10th Register No', null=True, blank=True)
     tenmarks = models.IntegerField(verbose_name='10th Marks', null=True, blank=True)
-    tenpercentage = models.IntegerField(verbose_name='10th Percentage', null=True, blank=True)
+    tenpercentage = models.DecimalField(max_digits=5, decimal_places=2, verbose_name='10th Percentage', null=True, blank=True)
     tenyear = models.IntegerField(default='0')
 
     qualifyingboard = models.CharField(max_length=20, verbose_name='Qualifying Board', null=True, blank=True)
@@ -364,6 +364,8 @@ class Faculty(models.Model):
             ('ME', 'Mechanical Engineering'))
 
     DESIG = (('Associate Professor', 'Associate Professor'),
+             ('Professor', 'Professor'),
+             ('Guest Faculty', 'Guest Faculty'),
              ('Assistant Professor', 'Assistant Professor'))
 
     CATEGORY = (('Permanent', 'Permanent'), ('Temporary', 'Temporary'))

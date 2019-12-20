@@ -15,20 +15,20 @@ User1 = settings.AUTH_USER_MODEL
 class CustomUserCreationForm(UserCreationForm):
     class Meta(UserCreationForm):
         model = CustomUser
-        fields = ['username', 'first_name', 'last_name', 'email', 'dept', 'password1', 'groups']
+        fields = ['username']#, 'first_name', 'last_name', 'email', 'dept', 'password', 'groups']
 
 
 class CustomUserChangeForm(UserChangeForm):
     class Meta:
         model = CustomUser
-        fields = ['username', 'email', 'dept']
+        fields = ['username',]# 'email', 'dept']
 
 
 class Userform(UserCreationForm):
     class Meta:
         model = CustomUser
-        fields = ['username', 'first_name', 'last_name', 'email', 'dept', 'password1', 'groups']
-        exclude = ('password1', 'password',)
+        fields = ['username', 'first_name', 'last_name', 'email', 'dept', 'password', 'groups']
+        exclude = ('password1','password',)
 
     def __init__(self, *args, **kwargs):
         super(Userform, self).__init__(*args, **kwargs)
@@ -177,7 +177,7 @@ class Studentmodelform(forms.ModelForm):
     for x in range(start_limit, end_limit):
         EXAM_YEAR.append((x, x))
 
-    name = forms.CharField(widget=forms.TextInput(attrs={'pattern': '[A-Za-z]+'}), label='Name')
+    name = forms.CharField(widget=forms.TextInput(attrs={'pattern': '[A-Za-z ]+'}), label='Name')
     dateofbirth = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
     qualifyingyear = forms.CharField(widget=forms.Select(choices=EXAM_YEAR), label='Qualifying Year')
     tenyear = forms.CharField(widget=forms.Select(choices=EXAM_YEAR), label='10th Qualifying Year')
@@ -238,9 +238,11 @@ class Studentmodelform(forms.ModelForm):
 
 class Studentupdateform(forms.ModelForm):
     regno = forms.IntegerField(disabled=True, widget=forms.TextInput(attrs={'size': 2}))
-    name = forms.CharField(disabled=True, widget=forms.TextInput(attrs={'size': 3, 'pattern': '[A-Za-z]+'}))
-    join = forms.IntegerField(disabled=True, widget=forms.TextInput(attrs={'size': 3}))
-    admtype = forms.CharField(disabled=True, widget=forms.TextInput(attrs={'size': 3}))
+    permanentaddress = forms.CharField(widget=forms.Textarea())
+    temporaryaddress = forms.CharField(widget=forms.Textarea())
+    # name = forms.CharField(disabled=True, widget=forms.TextInput(attrs={'size': 3, 'pattern': '[A-Za-z ]+'}))
+    # join = forms.IntegerField(disabled=True, widget=forms.TextInput(attrs={'size': 3}))
+    # admtype = forms.CharField(disabled=True, widget=forms.TextInput(attrs={'size': 3}))
 
     class Meta:
         model = Student
@@ -248,6 +250,8 @@ class Studentupdateform(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(Studentupdateform, self).__init__(*args, **kwargs)
+        self.fields['permanentaddress'].widget.attrs['style'] = 'width:400px;height:180px'
+        self.fields['temporaryaddress'].widget.attrs['style'] = 'width:400px;height:180px'
         self.fields['status'].widget.attrs['style'] = 'width:180px;'
         self.fields['branch'].widget.attrs['style'] = 'width:320px;'
         self.fields['regno'].label = 'Register Number'
@@ -317,7 +321,7 @@ class SyllabusForm(forms.ModelForm):
 class Syllabusmodelform(forms.ModelForm):
     EXAM_YEAR = []
     end_limit = datetime.datetime.today().year + 1
-    start_limit = datetime.datetime.today().year - 2
+    start_limit = 2015
 
     for x in range(start_limit, end_limit):
         EXAM_YEAR.append((x, x))
