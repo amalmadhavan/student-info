@@ -1,0 +1,1818 @@
+s
+2019-12-16 14:04:02,206 django.request WARNING  Not Found: /
+2019-12-16 14:04:02,305 django.request WARNING  Not Found: /favicon.ico
+2019-12-16 14:04:02,317 django.request WARNING  Not Found: /favicon.ico
+2019-12-16 14:04:07,053 django.request WARNING  Not Found: /student/main.css
+2019-12-16 14:12:59,325 django.request WARNING  Not Found: /student/main.css
+2019-12-16 14:14:47,320 django.request WARNING  Not Found: /
+2019-12-16 14:14:47,527 django.request WARNING  Not Found: /favicon.ico
+2019-12-16 14:14:47,539 django.request WARNING  Not Found: /favicon.ico
+2019-12-16 14:14:59,972 django.request WARNING  Not Found: /student/main.css
+2019-12-16 11:25:31,728 django.request WARNING  Not Found: /
+2019-12-16 11:25:31,902 django.request WARNING  Not Found: /favicon.ico
+2019-12-16 11:25:31,912 django.request WARNING  Not Found: /favicon.ico
+2019-12-16 11:35:17,871 django.request WARNING  Not Found: /
+2019-12-16 11:35:18,045 django.request WARNING  Not Found: /favicon.ico
+2019-12-16 11:35:18,055 django.request WARNING  Not Found: /favicon.ico
+2019-12-16 11:37:59,736 django.request ERROR    Internal Server Error: /admin/login/
+Traceback (most recent call last):
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/db/backends/utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+psycopg2.ProgrammingError: relation "student_customuser" does not exist
+LINE 1: ..._active", "student_customuser"."date_joined" FROM "student_c...
+                                                             ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/views/decorators/cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/sites.py", line 398, in login
+    return LoginView.as_view(**defaults)(request)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 62, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/views/decorators/debug.py", line 76, in sensitive_post_parameters_wrapper
+    return view(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 58, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 62, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 58, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 62, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/views/decorators/cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 58, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/auth/views.py", line 66, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/views/generic/base.py", line 89, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/views/generic/edit.py", line 141, in post
+    if form.is_valid():
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/forms/forms.py", line 179, in is_valid
+    return self.is_bound and not self.errors
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/forms/forms.py", line 174, in errors
+    self.full_clean()
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/forms/forms.py", line 377, in full_clean
+    self._clean_form()
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/forms/forms.py", line 404, in _clean_form
+    cleaned_data = self.clean()
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/auth/forms.py", line 195, in clean
+    self.user_cache = authenticate(self.request, username=username, password=password)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/auth/__init__.py", line 70, in authenticate
+    user = _authenticate_with_backend(backend, backend_path, request, credentials)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/auth/__init__.py", line 116, in _authenticate_with_backend
+    return backend.authenticate(*args, **credentials)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/auth/backends.py", line 16, in authenticate
+    user = UserModel._default_manager.get_by_natural_key(username)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/auth/base_user.py", line 44, in get_by_natural_key
+    return self.get(**{self.model.USERNAME_FIELD: username})
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/db/models/query.py", line 397, in get
+    num = len(clone)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/db/models/query.py", line 254, in __len__
+    self._fetch_all()
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/db/models/query.py", line 1179, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/db/models/query.py", line 53, in __iter__
+    results = compiler.execute_sql(chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/db/models/sql/compiler.py", line 1067, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/db/backends/utils.py", line 100, in execute
+    return super().execute(sql, params)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/db/backends/utils.py", line 68, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/db/backends/utils.py", line 77, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/db/backends/utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/db/utils.py", line 89, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/db/backends/utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+django.db.utils.ProgrammingError: relation "student_customuser" does not exist
+LINE 1: ..._active", "student_customuser"."date_joined" FROM "student_c...
+                                                             ^
+
+2019-12-16 12:15:14,371 django.request WARNING  Not Found: /
+2019-12-16 12:15:14,430 django.request WARNING  Not Found: /favicon.ico
+2019-12-16 12:15:14,456 django.request WARNING  Not Found: /favicon.ico
+2019-12-16 12:31:03,296 django.request ERROR    Internal Server Error: /admin/student/customuser/3/change/
+Traceback (most recent call last):
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 668, in get_form
+    return modelform_factory(self.model, **defaults)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/forms/models.py", line 549, in modelform_factory
+    return type(form)(class_name, (form,), form_class_attrs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/forms/models.py", line 266, in __new__
+    raise FieldError(message)
+django.core.exceptions.FieldError: Unknown field(s) (category) specified for CustomUser
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 574, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/views/decorators/cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/sites.py", line 223, in inner
+    return view(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 1556, in change_view
+    return self.changeform_view(request, object_id, form_url, extra_context)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 62, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 58, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 1450, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 1479, in _changeform_view
+    ModelForm = self.get_form(request, obj)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/auth/admin.py", line 79, in get_form
+    return super().get_form(request, obj, **defaults)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 672, in get_form
+    % (e, self.__class__.__name__)
+django.core.exceptions.FieldError: Unknown field(s) (category) specified for CustomUser. Check fields/fieldsets/exclude attributes of class CustomUserAdmin.
+2019-12-16 12:42:14,582 django.request ERROR    Internal Server Error: /admin/student/customuser/3/change/
+Traceback (most recent call last):
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 668, in get_form
+    return modelform_factory(self.model, **defaults)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/forms/models.py", line 549, in modelform_factory
+    return type(form)(class_name, (form,), form_class_attrs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/forms/models.py", line 266, in __new__
+    raise FieldError(message)
+django.core.exceptions.FieldError: Unknown field(s) (category) specified for CustomUser
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 574, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/views/decorators/cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/sites.py", line 223, in inner
+    return view(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 1556, in change_view
+    return self.changeform_view(request, object_id, form_url, extra_context)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 62, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 58, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 1450, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 1479, in _changeform_view
+    ModelForm = self.get_form(request, obj)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/auth/admin.py", line 79, in get_form
+    return super().get_form(request, obj, **defaults)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 672, in get_form
+    % (e, self.__class__.__name__)
+django.core.exceptions.FieldError: Unknown field(s) (category) specified for CustomUser. Check fields/fieldsets/exclude attributes of class CustomUserAdmin.
+2019-12-16 12:42:38,862 django.request ERROR    Internal Server Error: /admin/student/customuser/3/change/
+Traceback (most recent call last):
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 668, in get_form
+    return modelform_factory(self.model, **defaults)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/forms/models.py", line 549, in modelform_factory
+    return type(form)(class_name, (form,), form_class_attrs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/forms/models.py", line 266, in __new__
+    raise FieldError(message)
+django.core.exceptions.FieldError: Unknown field(s) (category) specified for CustomUser
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 574, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/views/decorators/cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/sites.py", line 223, in inner
+    return view(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 1556, in change_view
+    return self.changeform_view(request, object_id, form_url, extra_context)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 62, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 58, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 1450, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 1479, in _changeform_view
+    ModelForm = self.get_form(request, obj)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/auth/admin.py", line 79, in get_form
+    return super().get_form(request, obj, **defaults)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 672, in get_form
+    % (e, self.__class__.__name__)
+django.core.exceptions.FieldError: Unknown field(s) (category) specified for CustomUser. Check fields/fieldsets/exclude attributes of class CustomUserAdmin.
+2019-12-17 09:23:10,499 django.request WARNING  Not Found: /
+2019-12-17 09:23:10,715 django.request WARNING  Not Found: /favicon.ico
+2019-12-17 09:23:10,724 django.request WARNING  Not Found: /favicon.ico
+2019-12-17 09:23:17,577 django.request WARNING  Not Found: /
+2019-12-17 09:23:47,780 django.request ERROR    Internal Server Error: /admin/student/customuser/3/change/
+Traceback (most recent call last):
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 668, in get_form
+    return modelform_factory(self.model, **defaults)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/forms/models.py", line 549, in modelform_factory
+    return type(form)(class_name, (form,), form_class_attrs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/forms/models.py", line 266, in __new__
+    raise FieldError(message)
+django.core.exceptions.FieldError: Unknown field(s) (category) specified for CustomUser
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 574, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/views/decorators/cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/sites.py", line 223, in inner
+    return view(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 1556, in change_view
+    return self.changeform_view(request, object_id, form_url, extra_context)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 62, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 58, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 1450, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 1479, in _changeform_view
+    ModelForm = self.get_form(request, obj)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/auth/admin.py", line 79, in get_form
+    return super().get_form(request, obj, **defaults)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 672, in get_form
+    % (e, self.__class__.__name__)
+django.core.exceptions.FieldError: Unknown field(s) (category) specified for CustomUser. Check fields/fieldsets/exclude attributes of class CustomUserAdmin.
+2019-12-18 11:07:30,793 django.request WARNING  Not Found: /
+2019-12-18 11:07:31,006 django.request WARNING  Not Found: /favicon.ico
+2019-12-18 11:07:31,015 django.request WARNING  Not Found: /favicon.ico
+2019-12-18 11:13:03,014 django.request WARNING  Not Found: /student/main.css
+2019-12-18 11:13:14,419 student.views INFO     URL /student/login_user/ calls loguser 
+2019-12-18 11:13:14,532 student.views INFO     admin has logged in 
+2019-12-18 11:13:14,532 student.views INFO     username admin
+2019-12-18 11:13:14,548 student.views INFO     URL /student/home/ calls home() 
+2019-12-18 11:13:14,548 student.views INFO     username admin 
+2019-12-18 11:13:22,593 django.request WARNING  Not Found: /student/main.css
+2019-12-18 11:13:32,985 django.request ERROR    Internal Server Error: /admin/student/customuser/3/change/
+Traceback (most recent call last):
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 668, in get_form
+    return modelform_factory(self.model, **defaults)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/forms/models.py", line 549, in modelform_factory
+    return type(form)(class_name, (form,), form_class_attrs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/forms/models.py", line 266, in __new__
+    raise FieldError(message)
+django.core.exceptions.FieldError: Unknown field(s) (category) specified for CustomUser
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 574, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/views/decorators/cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/sites.py", line 223, in inner
+    return view(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 1556, in change_view
+    return self.changeform_view(request, object_id, form_url, extra_context)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 62, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 58, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 1450, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 1479, in _changeform_view
+    ModelForm = self.get_form(request, obj)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/auth/admin.py", line 79, in get_form
+    return super().get_form(request, obj, **defaults)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 672, in get_form
+    % (e, self.__class__.__name__)
+django.core.exceptions.FieldError: Unknown field(s) (category) specified for CustomUser. Check fields/fieldsets/exclude attributes of class CustomUserAdmin.
+2019-12-18 11:14:00,588 django.request ERROR    Internal Server Error: /admin/student/customuser/2/change/
+Traceback (most recent call last):
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 668, in get_form
+    return modelform_factory(self.model, **defaults)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/forms/models.py", line 549, in modelform_factory
+    return type(form)(class_name, (form,), form_class_attrs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/forms/models.py", line 266, in __new__
+    raise FieldError(message)
+django.core.exceptions.FieldError: Unknown field(s) (category) specified for CustomUser
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 574, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/views/decorators/cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/sites.py", line 223, in inner
+    return view(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 1556, in change_view
+    return self.changeform_view(request, object_id, form_url, extra_context)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 62, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 58, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 1450, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 1479, in _changeform_view
+    ModelForm = self.get_form(request, obj)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/auth/admin.py", line 79, in get_form
+    return super().get_form(request, obj, **defaults)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 672, in get_form
+    % (e, self.__class__.__name__)
+django.core.exceptions.FieldError: Unknown field(s) (category) specified for CustomUser. Check fields/fieldsets/exclude attributes of class CustomUserAdmin.
+2019-12-18 11:35:06,843 django.request WARNING  Not Found: /student/main.css
+2019-12-18 11:35:08,327 django.request WARNING  Not Found: /student/main.css
+2019-12-18 11:35:09,164 django.request WARNING  Not Found: /student/main.css
+2019-12-18 11:37:36,289 django.request ERROR    Internal Server Error: /admin/student/customuser/1/change/
+Traceback (most recent call last):
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 668, in get_form
+    return modelform_factory(self.model, **defaults)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/forms/models.py", line 549, in modelform_factory
+    return type(form)(class_name, (form,), form_class_attrs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/forms/models.py", line 266, in __new__
+    raise FieldError(message)
+django.core.exceptions.FieldError: Unknown field(s) (category) specified for CustomUser
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 574, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/views/decorators/cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/sites.py", line 223, in inner
+    return view(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 1556, in change_view
+    return self.changeform_view(request, object_id, form_url, extra_context)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 62, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 58, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 1450, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 1479, in _changeform_view
+    ModelForm = self.get_form(request, obj)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/auth/admin.py", line 79, in get_form
+    return super().get_form(request, obj, **defaults)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 672, in get_form
+    % (e, self.__class__.__name__)
+django.core.exceptions.FieldError: Unknown field(s) (category) specified for CustomUser. Check fields/fieldsets/exclude attributes of class CustomUserAdmin.
+2019-12-18 11:38:28,972 django.request ERROR    Internal Server Error: /admin/student/customuser/1/change/
+Traceback (most recent call last):
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 668, in get_form
+    return modelform_factory(self.model, **defaults)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/forms/models.py", line 549, in modelform_factory
+    return type(form)(class_name, (form,), form_class_attrs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/forms/models.py", line 266, in __new__
+    raise FieldError(message)
+django.core.exceptions.FieldError: Unknown field(s) (category) specified for CustomUser
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 574, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/views/decorators/cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/sites.py", line 223, in inner
+    return view(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 1556, in change_view
+    return self.changeform_view(request, object_id, form_url, extra_context)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 62, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 58, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 1450, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 1479, in _changeform_view
+    ModelForm = self.get_form(request, obj)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/auth/admin.py", line 79, in get_form
+    return super().get_form(request, obj, **defaults)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 672, in get_form
+    % (e, self.__class__.__name__)
+django.core.exceptions.FieldError: Unknown field(s) (category) specified for CustomUser. Check fields/fieldsets/exclude attributes of class CustomUserAdmin.
+2019-12-18 11:43:07,591 django.request ERROR    Internal Server Error: /admin/student/customuser/1/change/
+Traceback (most recent call last):
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 668, in get_form
+    return modelform_factory(self.model, **defaults)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/forms/models.py", line 549, in modelform_factory
+    return type(form)(class_name, (form,), form_class_attrs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/forms/models.py", line 266, in __new__
+    raise FieldError(message)
+django.core.exceptions.FieldError: Unknown field(s) (category) specified for CustomUser
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 574, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/views/decorators/cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/sites.py", line 223, in inner
+    return view(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 1556, in change_view
+    return self.changeform_view(request, object_id, form_url, extra_context)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 62, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 58, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 1450, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 1479, in _changeform_view
+    ModelForm = self.get_form(request, obj)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/auth/admin.py", line 79, in get_form
+    return super().get_form(request, obj, **defaults)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 672, in get_form
+    % (e, self.__class__.__name__)
+django.core.exceptions.FieldError: Unknown field(s) (category) specified for CustomUser. Check fields/fieldsets/exclude attributes of class CustomUserAdmin.
+2019-12-18 11:43:58,843 django.request WARNING  Not Found: /student/main.css
+2019-12-18 11:44:24,524 django.request ERROR    Internal Server Error: /admin/student/customuser/1/change/
+Traceback (most recent call last):
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 668, in get_form
+    return modelform_factory(self.model, **defaults)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/forms/models.py", line 549, in modelform_factory
+    return type(form)(class_name, (form,), form_class_attrs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/forms/models.py", line 266, in __new__
+    raise FieldError(message)
+django.core.exceptions.FieldError: Unknown field(s) (category) specified for CustomUser
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 574, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/views/decorators/cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/sites.py", line 223, in inner
+    return view(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 1556, in change_view
+    return self.changeform_view(request, object_id, form_url, extra_context)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 62, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 58, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 1450, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 1479, in _changeform_view
+    ModelForm = self.get_form(request, obj)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/auth/admin.py", line 79, in get_form
+    return super().get_form(request, obj, **defaults)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 672, in get_form
+    % (e, self.__class__.__name__)
+django.core.exceptions.FieldError: Unknown field(s) (category) specified for CustomUser. Check fields/fieldsets/exclude attributes of class CustomUserAdmin.
+2019-12-18 11:44:53,952 django.request ERROR    Internal Server Error: /admin/student/customuser/1/change/
+Traceback (most recent call last):
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 668, in get_form
+    return modelform_factory(self.model, **defaults)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/forms/models.py", line 549, in modelform_factory
+    return type(form)(class_name, (form,), form_class_attrs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/forms/models.py", line 266, in __new__
+    raise FieldError(message)
+django.core.exceptions.FieldError: Unknown field(s) (category) specified for CustomUser
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 574, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/views/decorators/cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/sites.py", line 223, in inner
+    return view(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 1556, in change_view
+    return self.changeform_view(request, object_id, form_url, extra_context)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 62, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 58, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 1450, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 1479, in _changeform_view
+    ModelForm = self.get_form(request, obj)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/auth/admin.py", line 79, in get_form
+    return super().get_form(request, obj, **defaults)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 672, in get_form
+    % (e, self.__class__.__name__)
+django.core.exceptions.FieldError: Unknown field(s) (category) specified for CustomUser. Check fields/fieldsets/exclude attributes of class CustomUserAdmin.
+2019-12-18 11:45:43,033 django.request WARNING  Not Found: /
+2019-12-18 11:45:54,597 django.request ERROR    Internal Server Error: /admin/student/customuser/1/change/
+Traceback (most recent call last):
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 668, in get_form
+    return modelform_factory(self.model, **defaults)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/forms/models.py", line 549, in modelform_factory
+    return type(form)(class_name, (form,), form_class_attrs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/forms/models.py", line 266, in __new__
+    raise FieldError(message)
+django.core.exceptions.FieldError: Unknown field(s) (category) specified for CustomUser
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 574, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/views/decorators/cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/sites.py", line 223, in inner
+    return view(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 1556, in change_view
+    return self.changeform_view(request, object_id, form_url, extra_context)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 62, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 58, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 1450, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 1479, in _changeform_view
+    ModelForm = self.get_form(request, obj)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/auth/admin.py", line 79, in get_form
+    return super().get_form(request, obj, **defaults)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 672, in get_form
+    % (e, self.__class__.__name__)
+django.core.exceptions.FieldError: Unknown field(s) (category) specified for CustomUser. Check fields/fieldsets/exclude attributes of class CustomUserAdmin.
+2019-12-18 11:46:25,851 django.request ERROR    Internal Server Error: /admin/student/customuser/1/change/
+Traceback (most recent call last):
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 668, in get_form
+    return modelform_factory(self.model, **defaults)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/forms/models.py", line 549, in modelform_factory
+    return type(form)(class_name, (form,), form_class_attrs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/forms/models.py", line 266, in __new__
+    raise FieldError(message)
+django.core.exceptions.FieldError: Unknown field(s) (category) specified for CustomUser
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 574, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/views/decorators/cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/sites.py", line 223, in inner
+    return view(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 1556, in change_view
+    return self.changeform_view(request, object_id, form_url, extra_context)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 62, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 58, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 1450, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 1479, in _changeform_view
+    ModelForm = self.get_form(request, obj)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/auth/admin.py", line 79, in get_form
+    return super().get_form(request, obj, **defaults)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 672, in get_form
+    % (e, self.__class__.__name__)
+django.core.exceptions.FieldError: Unknown field(s) (category) specified for CustomUser. Check fields/fieldsets/exclude attributes of class CustomUserAdmin.
+2019-12-18 11:53:05,686 django.request ERROR    Internal Server Error: /admin/student/customuser/1/change/
+Traceback (most recent call last):
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 668, in get_form
+    return modelform_factory(self.model, **defaults)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/forms/models.py", line 549, in modelform_factory
+    return type(form)(class_name, (form,), form_class_attrs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/forms/models.py", line 266, in __new__
+    raise FieldError(message)
+django.core.exceptions.FieldError: Unknown field(s) (category) specified for CustomUser
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 574, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/views/decorators/cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/sites.py", line 223, in inner
+    return view(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 1556, in change_view
+    return self.changeform_view(request, object_id, form_url, extra_context)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 62, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 58, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 1450, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 1479, in _changeform_view
+    ModelForm = self.get_form(request, obj)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/auth/admin.py", line 79, in get_form
+    return super().get_form(request, obj, **defaults)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 672, in get_form
+    % (e, self.__class__.__name__)
+django.core.exceptions.FieldError: Unknown field(s) (category) specified for CustomUser. Check fields/fieldsets/exclude attributes of class CustomUserAdmin.
+2019-12-18 11:54:46,298 django.request ERROR    Internal Server Error: /admin/student/customuser/1/change/
+Traceback (most recent call last):
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 668, in get_form
+    return modelform_factory(self.model, **defaults)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/forms/models.py", line 549, in modelform_factory
+    return type(form)(class_name, (form,), form_class_attrs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/forms/models.py", line 266, in __new__
+    raise FieldError(message)
+django.core.exceptions.FieldError: Unknown field(s) (category) specified for CustomUser
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 574, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/views/decorators/cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/sites.py", line 223, in inner
+    return view(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 1556, in change_view
+    return self.changeform_view(request, object_id, form_url, extra_context)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 62, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 58, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 1450, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 1479, in _changeform_view
+    ModelForm = self.get_form(request, obj)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/auth/admin.py", line 79, in get_form
+    return super().get_form(request, obj, **defaults)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 672, in get_form
+    % (e, self.__class__.__name__)
+django.core.exceptions.FieldError: Unknown field(s) (category) specified for CustomUser. Check fields/fieldsets/exclude attributes of class CustomUserAdmin.
+2019-12-18 11:57:32,853 django.request ERROR    Internal Server Error: /admin/student/customuser/1/change/
+Traceback (most recent call last):
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 668, in get_form
+    return modelform_factory(self.model, **defaults)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/forms/models.py", line 549, in modelform_factory
+    return type(form)(class_name, (form,), form_class_attrs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/forms/models.py", line 266, in __new__
+    raise FieldError(message)
+django.core.exceptions.FieldError: Unknown field(s) (category) specified for CustomUser
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 574, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/views/decorators/cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/sites.py", line 223, in inner
+    return view(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 1556, in change_view
+    return self.changeform_view(request, object_id, form_url, extra_context)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 62, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 58, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 1450, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 1479, in _changeform_view
+    ModelForm = self.get_form(request, obj)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/auth/admin.py", line 79, in get_form
+    return super().get_form(request, obj, **defaults)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 672, in get_form
+    % (e, self.__class__.__name__)
+django.core.exceptions.FieldError: Unknown field(s) (category) specified for CustomUser. Check fields/fieldsets/exclude attributes of class CustomUserAdmin.
+2019-12-18 11:59:28,314 django.request WARNING  Not Found: /admin/student/customuser/
+2019-12-18 12:00:11,495 django.request ERROR    Internal Server Error: /admin/student/customuser/1/change/
+Traceback (most recent call last):
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 668, in get_form
+    return modelform_factory(self.model, **defaults)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/forms/models.py", line 549, in modelform_factory
+    return type(form)(class_name, (form,), form_class_attrs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/forms/models.py", line 266, in __new__
+    raise FieldError(message)
+django.core.exceptions.FieldError: Unknown field(s) (category) specified for CustomUser
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 574, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/views/decorators/cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/sites.py", line 223, in inner
+    return view(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 1556, in change_view
+    return self.changeform_view(request, object_id, form_url, extra_context)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 62, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 58, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 1450, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 1479, in _changeform_view
+    ModelForm = self.get_form(request, obj)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/auth/admin.py", line 79, in get_form
+    return super().get_form(request, obj, **defaults)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 672, in get_form
+    % (e, self.__class__.__name__)
+django.core.exceptions.FieldError: Unknown field(s) (category) specified for CustomUser. Check fields/fieldsets/exclude attributes of class CustomUserAdmin.
+2019-12-18 12:01:34,976 django.request ERROR    Internal Server Error: /admin/student/customuser/1/change/
+Traceback (most recent call last):
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 668, in get_form
+    return modelform_factory(self.model, **defaults)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/forms/models.py", line 549, in modelform_factory
+    return type(form)(class_name, (form,), form_class_attrs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/forms/models.py", line 266, in __new__
+    raise FieldError(message)
+django.core.exceptions.FieldError: Unknown field(s) (category) specified for CustomUser
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 574, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/views/decorators/cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/sites.py", line 223, in inner
+    return view(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 1557, in change_view
+    return self.changeform_view(request, object_id, form_url, extra_context)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 62, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 58, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 1451, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 1480, in _changeform_view
+    ModelForm = self.get_form(request, obj)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/auth/admin.py", line 79, in get_form
+    return super().get_form(request, obj, **defaults)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 673, in get_form
+    % (e, self.__class__.__name__)
+django.core.exceptions.FieldError: Unknown field(s) (category) specified for CustomUser. Check fields/fieldsets/exclude attributes of class CustomUserAdmin.
+2019-12-18 12:02:24,032 django.request ERROR    Internal Server Error: /admin/student/customuser/1/change/
+Traceback (most recent call last):
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 669, in get_form
+    return modelform_factory(self.model, **defaults)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/forms/models.py", line 549, in modelform_factory
+    return type(form)(class_name, (form,), form_class_attrs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/forms/models.py", line 266, in __new__
+    raise FieldError(message)
+django.core.exceptions.FieldError: Unknown field(s) (category) specified for CustomUser
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 574, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/views/decorators/cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/sites.py", line 223, in inner
+    return view(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 1557, in change_view
+    return self.changeform_view(request, object_id, form_url, extra_context)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 62, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 58, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 1451, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 1480, in _changeform_view
+    ModelForm = self.get_form(request, obj)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/auth/admin.py", line 79, in get_form
+    return super().get_form(request, obj, **defaults)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 673, in get_form
+    % (e, self.__class__.__name__)
+django.core.exceptions.FieldError: Unknown field(s) (category) specified for CustomUser. Check fields/fieldsets/exclude attributes of class CustomUserAdmin.
+2019-12-18 12:03:57,200 django.request ERROR    Internal Server Error: /admin/student/customuser/1/change/
+Traceback (most recent call last):
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 669, in get_form
+    return modelform_factory(self.model, **defaults)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/forms/models.py", line 549, in modelform_factory
+    return type(form)(class_name, (form,), form_class_attrs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/forms/models.py", line 266, in __new__
+    raise FieldError(message)
+django.core.exceptions.FieldError: Unknown field(s) (category) specified for CustomUser
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 574, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/views/decorators/cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/sites.py", line 223, in inner
+    return view(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 1557, in change_view
+    return self.changeform_view(request, object_id, form_url, extra_context)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 62, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 58, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 1451, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 1480, in _changeform_view
+    ModelForm = self.get_form(request, obj)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/auth/admin.py", line 79, in get_form
+    return super().get_form(request, obj, **defaults)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 673, in get_form
+    % (e, self.__class__.__name__)
+django.core.exceptions.FieldError: Unknown field(s) (category) specified for CustomUser. Check fields/fieldsets/exclude attributes of class CustomUserAdmin.
+2019-12-18 12:04:46,545 django.request ERROR    Internal Server Error: /admin/student/customuser/1/change/
+Traceback (most recent call last):
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 669, in get_form
+    return modelform_factory(self.model, **defaults)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/forms/models.py", line 549, in modelform_factory
+    return type(form)(class_name, (form,), form_class_attrs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/forms/models.py", line 266, in __new__
+    raise FieldError(message)
+django.core.exceptions.FieldError: Unknown field(s) (category) specified for CustomUser
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 574, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/views/decorators/cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/sites.py", line 223, in inner
+    return view(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 1557, in change_view
+    return self.changeform_view(request, object_id, form_url, extra_context)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 62, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 58, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 1451, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 1480, in _changeform_view
+    ModelForm = self.get_form(request, obj)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/auth/admin.py", line 79, in get_form
+    return super().get_form(request, obj, **defaults)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 673, in get_form
+    % (e, self.__class__.__name__)
+django.core.exceptions.FieldError: Unknown field(s) (category) specified for CustomUser. Check fields/fieldsets/exclude attributes of class CustomUserAdmin.
+2019-12-18 12:04:59,451 django.request ERROR    Internal Server Error: /admin/student/customuser/1/change/
+Traceback (most recent call last):
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 669, in get_form
+    return modelform_factory(self.model, **defaults)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/forms/models.py", line 549, in modelform_factory
+    return type(form)(class_name, (form,), form_class_attrs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/forms/models.py", line 266, in __new__
+    raise FieldError(message)
+django.core.exceptions.FieldError: Unknown field(s) (category) specified for CustomUser
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 574, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/views/decorators/cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/sites.py", line 223, in inner
+    return view(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 1557, in change_view
+    return self.changeform_view(request, object_id, form_url, extra_context)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 62, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 58, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 1451, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 1480, in _changeform_view
+    ModelForm = self.get_form(request, obj)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/auth/admin.py", line 79, in get_form
+    return super().get_form(request, obj, **defaults)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 673, in get_form
+    % (e, self.__class__.__name__)
+django.core.exceptions.FieldError: Unknown field(s) (category) specified for CustomUser. Check fields/fieldsets/exclude attributes of class CustomUserAdmin.
+2019-12-18 12:05:50,459 django.request ERROR    Internal Server Error: /admin/student/customuser/1/change/
+Traceback (most recent call last):
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 669, in get_form
+    return modelform_factory(self.model, **defaults)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/forms/models.py", line 550, in modelform_factory
+    return type(form)(class_name, (form,), form_class_attrs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/forms/models.py", line 266, in __new__
+    raise FieldError(message)
+django.core.exceptions.FieldError: Unknown field(s) (category) specified for CustomUser
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 574, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/views/decorators/cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/sites.py", line 223, in inner
+    return view(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 1557, in change_view
+    return self.changeform_view(request, object_id, form_url, extra_context)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 62, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 58, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 1451, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 1480, in _changeform_view
+    ModelForm = self.get_form(request, obj)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/auth/admin.py", line 79, in get_form
+    return super().get_form(request, obj, **defaults)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 673, in get_form
+    % (e, self.__class__.__name__)
+django.core.exceptions.FieldError: Unknown field(s) (category) specified for CustomUser. Check fields/fieldsets/exclude attributes of class CustomUserAdmin.
+2019-12-18 12:07:57,285 django.request ERROR    Internal Server Error: /admin/student/customuser/1/change/
+Traceback (most recent call last):
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 669, in get_form
+    return modelform_factory(self.model, **defaults)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/forms/models.py", line 549, in modelform_factory
+    return type(form)(class_name, (form,), form_class_attrs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/forms/models.py", line 266, in __new__
+    raise FieldError(message)
+django.core.exceptions.FieldError: Unknown field(s) (category) specified for CustomUser
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 574, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/views/decorators/cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/sites.py", line 223, in inner
+    return view(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 1557, in change_view
+    return self.changeform_view(request, object_id, form_url, extra_context)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 62, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 58, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 1451, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 1480, in _changeform_view
+    ModelForm = self.get_form(request, obj)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/auth/admin.py", line 79, in get_form
+    return super().get_form(request, obj, **defaults)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 673, in get_form
+    % (e, self.__class__.__name__)
+django.core.exceptions.FieldError: Unknown field(s) (category) specified for CustomUser. Check fields/fieldsets/exclude attributes of class CustomUserAdmin.
+2019-12-18 12:23:05,413 django.request ERROR    Internal Server Error: /admin/student/customuser/1/change/
+Traceback (most recent call last):
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 669, in get_form
+    return modelform_factory(self.model, **defaults)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/forms/models.py", line 550, in modelform_factory
+    return type(form)(class_name, (form,), form_class_attrs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/forms/models.py", line 266, in __new__
+    raise FieldError(message)
+django.core.exceptions.FieldError: Unknown field(s) (category) specified for CustomUser
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 574, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/views/decorators/cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/sites.py", line 223, in inner
+    return view(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 1557, in change_view
+    return self.changeform_view(request, object_id, form_url, extra_context)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 62, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 58, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 1451, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 1480, in _changeform_view
+    ModelForm = self.get_form(request, obj)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/auth/admin.py", line 79, in get_form
+    return super().get_form(request, obj, **defaults)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 673, in get_form
+    % (e, self.__class__.__name__)
+django.core.exceptions.FieldError: Unknown field(s) (category) specified for CustomUser. Check fields/fieldsets/exclude attributes of class CustomUserAdmin.
+2019-12-18 12:25:05,894 django.request ERROR    Internal Server Error: /admin/student/customuser/1/change/
+Traceback (most recent call last):
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 669, in get_form
+    return modelform_factory(self.model, **defaults)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/forms/models.py", line 551, in modelform_factory
+    return type(form)(class_name, (form,), form_class_attrs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/forms/models.py", line 266, in __new__
+    raise FieldError(message)
+django.core.exceptions.FieldError: Unknown field(s) (category) specified for CustomUser
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 574, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/views/decorators/cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/sites.py", line 223, in inner
+    return view(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 1557, in change_view
+    return self.changeform_view(request, object_id, form_url, extra_context)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 62, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 58, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 1451, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 1480, in _changeform_view
+    ModelForm = self.get_form(request, obj)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/auth/admin.py", line 79, in get_form
+    return super().get_form(request, obj, **defaults)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 673, in get_form
+    % (e, self.__class__.__name__)
+django.core.exceptions.FieldError: Unknown field(s) (category) specified for CustomUser. Check fields/fieldsets/exclude attributes of class CustomUserAdmin.
+2019-12-18 12:27:43,286 django.request ERROR    Internal Server Error: /admin/student/customuser/1/change/
+Traceback (most recent call last):
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 668, in get_form
+    return modelform_factory(self.model, **defaults)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/forms/models.py", line 551, in modelform_factory
+    return type(form)(class_name, (form,), form_class_attrs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/forms/models.py", line 266, in __new__
+    raise FieldError(message)
+django.core.exceptions.FieldError: Unknown field(s) (category) specified for CustomUser
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 574, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/views/decorators/cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/sites.py", line 223, in inner
+    return view(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 1556, in change_view
+    return self.changeform_view(request, object_id, form_url, extra_context)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 62, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 58, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 1450, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 1479, in _changeform_view
+    ModelForm = self.get_form(request, obj)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/auth/admin.py", line 79, in get_form
+    return super().get_form(request, obj, **defaults)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 672, in get_form
+    % (e, self.__class__.__name__)
+django.core.exceptions.FieldError: Unknown field(s) (category) specified for CustomUser. Check fields/fieldsets/exclude attributes of class CustomUserAdmin.
+2019-12-18 12:30:11,023 django.request ERROR    Internal Server Error: /admin/student/customuser/1/change/
+Traceback (most recent call last):
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 668, in get_form
+    return modelform_factory(self.model, **defaults)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/forms/models.py", line 549, in modelform_factory
+    return type(form)(class_name, (form,), form_class_attrs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/forms/models.py", line 268, in __new__
+    raise FieldError(message)
+django.core.exceptions.FieldError: Unknown field(s) (category) specified for CustomUser
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 574, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/views/decorators/cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/sites.py", line 223, in inner
+    return view(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 1556, in change_view
+    return self.changeform_view(request, object_id, form_url, extra_context)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 62, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 58, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 1450, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 1479, in _changeform_view
+    ModelForm = self.get_form(request, obj)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/auth/admin.py", line 79, in get_form
+    return super().get_form(request, obj, **defaults)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 672, in get_form
+    % (e, self.__class__.__name__)
+django.core.exceptions.FieldError: Unknown field(s) (category) specified for CustomUser. Check fields/fieldsets/exclude attributes of class CustomUserAdmin.
+2019-12-18 12:30:31,505 django.request ERROR    Internal Server Error: /admin/student/customuser/1/change/
+Traceback (most recent call last):
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 668, in get_form
+    return modelform_factory(self.model, **defaults)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/forms/models.py", line 549, in modelform_factory
+    return type(form)(class_name, (form,), form_class_attrs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/forms/models.py", line 268, in __new__
+    raise FieldError(message)
+django.core.exceptions.FieldError: Unknown field(s) (category) specified for CustomUser
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 574, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/views/decorators/cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/sites.py", line 223, in inner
+    return view(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 1556, in change_view
+    return self.changeform_view(request, object_id, form_url, extra_context)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 62, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 58, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 1450, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 1479, in _changeform_view
+    ModelForm = self.get_form(request, obj)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/auth/admin.py", line 79, in get_form
+    return super().get_form(request, obj, **defaults)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 672, in get_form
+    % (e, self.__class__.__name__)
+django.core.exceptions.FieldError: Unknown field(s) (category) specified for CustomUser. Check fields/fieldsets/exclude attributes of class CustomUserAdmin.
+2019-12-18 12:31:14,572 django.request ERROR    Internal Server Error: /admin/student/customuser/1/change/
+Traceback (most recent call last):
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 668, in get_form
+    return modelform_factory(self.model, **defaults)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/forms/models.py", line 549, in modelform_factory
+    return type(form)(class_name, (form,), form_class_attrs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/forms/models.py", line 268, in __new__
+    raise FieldError(message)
+django.core.exceptions.FieldError: Unknown field(s) (category) specified for CustomUser
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 574, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/views/decorators/cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/sites.py", line 223, in inner
+    return view(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 1556, in change_view
+    return self.changeform_view(request, object_id, form_url, extra_context)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 62, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 58, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 1450, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 1479, in _changeform_view
+    ModelForm = self.get_form(request, obj)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/auth/admin.py", line 79, in get_form
+    return super().get_form(request, obj, **defaults)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 672, in get_form
+    % (e, self.__class__.__name__)
+django.core.exceptions.FieldError: Unknown field(s) (category) specified for CustomUser. Check fields/fieldsets/exclude attributes of class CustomUserAdmin.
+2019-12-18 12:39:24,043 django.request ERROR    Internal Server Error: /admin/student/customuser/1/change/
+Traceback (most recent call last):
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 668, in get_form
+    return modelform_factory(self.model, **defaults)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/forms/models.py", line 549, in modelform_factory
+    return type(form)(class_name, (form,), form_class_attrs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/forms/models.py", line 268, in __new__
+    raise FieldError(message)
+django.core.exceptions.FieldError: Unknown field(s) (category) specified for CustomUser
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 574, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/views/decorators/cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/sites.py", line 223, in inner
+    return view(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 1556, in change_view
+    return self.changeform_view(request, object_id, form_url, extra_context)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 62, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 58, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 1450, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 1479, in _changeform_view
+    ModelForm = self.get_form(request, obj)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/auth/admin.py", line 79, in get_form
+    return super().get_form(request, obj, **defaults)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 672, in get_form
+    % (e, self.__class__.__name__)
+django.core.exceptions.FieldError: Unknown field(s) (category) specified for CustomUser. Check fields/fieldsets/exclude attributes of class CustomUserAdmin.
+2019-12-18 12:40:03,244 django.request ERROR    Internal Server Error: /admin/student/customuser/1/change/
+Traceback (most recent call last):
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 668, in get_form
+    return modelform_factory(self.model, **defaults)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/forms/models.py", line 549, in modelform_factory
+    return type(form)(class_name, (form,), form_class_attrs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/forms/models.py", line 268, in __new__
+    raise FieldError(message)
+django.core.exceptions.FieldError: Unknown field(s) (category) specified for CustomUser
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 574, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/views/decorators/cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/sites.py", line 223, in inner
+    return view(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 1556, in change_view
+    return self.changeform_view(request, object_id, form_url, extra_context)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 62, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/utils/decorators.py", line 58, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 1450, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 1479, in _changeform_view
+    ModelForm = self.get_form(request, obj)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/auth/admin.py", line 79, in get_form
+    return super().get_form(request, obj, **defaults)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/admin/options.py", line 672, in get_form
+    % (e, self.__class__.__name__)
+django.core.exceptions.FieldError: Unknown field(s) (category) specified for CustomUser. Check fields/fieldsets/exclude attributes of class CustomUserAdmin.
+2019-12-18 12:59:30,070 student.views INFO     URL /student/add/ calls StudentCreate() 
+2019-12-18 12:59:30,071 student.views INFO     username admin 
+2019-12-18 12:59:42,698 student.views INFO     URL /student/stu_search/ calls student_search() 
+2019-12-18 12:59:42,698 student.views INFO     username admin 
+2019-12-18 12:59:45,980 student.views INFO     URL /student/add/ calls StudentCreate() 
+2019-12-18 12:59:45,980 student.views INFO     username admin 
+2019-12-18 13:00:48,290 student.views INFO     URL /student/add/ calls StudentCreate() 
+2019-12-18 13:00:48,291 student.views INFO     username admin 
+2019-12-18 13:00:49,326 student.views INFO     URL /student/add/ calls StudentCreate() 
+2019-12-18 13:00:49,326 student.views INFO     username admin 
+2019-12-18 13:00:50,189 student.views INFO     URL /student/add/ calls StudentCreate() 
+2019-12-18 13:00:50,189 student.views INFO     username admin 
+2019-12-18 13:00:50,743 student.views INFO     URL /student/add/ calls StudentCreate() 
+2019-12-18 13:00:50,743 student.views INFO     username admin 
+2019-12-18 13:00:51,379 student.views INFO     URL /student/add/ calls StudentCreate() 
+2019-12-18 13:00:51,380 student.views INFO     username admin 
+2019-12-18 13:00:52,188 student.views INFO     URL /student/add/ calls StudentCreate() 
+2019-12-18 13:00:52,188 student.views INFO     username admin 
+2019-12-18 13:03:29,234 django.request WARNING  Not Found: /student/main.css
+2019-12-18 13:03:35,392 student.views INFO     URL /student/login_user/ calls loguser 
+2019-12-18 13:03:35,486 student.views INFO     admin has logged in 
+2019-12-18 13:03:35,486 student.views INFO     username admin
+2019-12-18 13:03:35,498 student.views INFO     URL /student/home/ calls home() 
+2019-12-18 13:03:35,498 student.views INFO     username admin 
+2019-12-18 13:03:40,543 student.views INFO     URL /student/add/ calls StudentCreate() 
+2019-12-18 13:03:40,544 student.views INFO     username admin 
+2019-12-19 17:58:33,011 django.request WARNING  Not Found: /
+2019-12-19 17:58:33,235 django.request WARNING  Not Found: /favicon.ico
+2019-12-19 17:58:33,246 django.request WARNING  Not Found: /favicon.ico
+2019-12-19 17:58:42,478 django.request WARNING  Not Found: /student/main.css
+2019-12-19 17:58:42,596 django.request WARNING  Not Found: /favicon.ico
+2019-12-19 17:58:42,628 django.request WARNING  Not Found: /favicon.ico
+2019-12-19 17:58:46,939 student.views INFO     URL /student/login_user/ calls loguser 
+2019-12-19 17:58:47,042 student.views INFO     admin has logged in 
+2019-12-19 17:58:47,042 student.views INFO     username admin
+2019-12-19 17:58:47,057 student.views INFO     URL /student/home/ calls home() 
+2019-12-19 17:58:47,057 student.views INFO     username admin 
+2019-12-19 17:58:51,298 student.views INFO     URL /student/stu_search/ calls student_search() 
+2019-12-19 17:58:51,298 student.views INFO     username admin 
+2019-12-19 17:58:53,223 student.views INFO     URL /student/stu_search/?cursem=&join=&regno=&submit= calls student_search() 
+2019-12-19 17:58:53,223 student.views INFO     username admin 
+2019-12-19 17:58:53,509 student.views INFO     URL /student/stu_search/?cursem=&join=&regno=&submit= calls student_search() 
+2019-12-19 17:58:53,509 student.views INFO     username admin 
+2019-12-19 17:58:59,051 student.views INFO     URL /student/add/ calls StudentCreate() 
+2019-12-19 17:58:59,052 student.views INFO     username admin 
+2019-12-19 17:59:26,984 student.views INFO     URL /student/home/ calls home() 
+2019-12-19 17:59:26,984 student.views INFO     username admin 
+2019-12-19 17:59:38,229 student.views INFO     URL /student/add/ calls StudentCreate() 
+2019-12-19 17:59:38,230 student.views INFO     username admin 
+2019-12-19 18:00:01,067 student.views INFO     URL /student/syllabus_add/ calls SyllabusCreate() 
+2019-12-19 18:00:01,067 student.views INFO     username admin 
+2019-12-19 18:34:40,595 student.views INFO     URL /student/faculty_add/ calls FacultyCreate() 
+2019-12-19 18:34:40,595 student.views INFO     username admin 
+2019-12-19 18:34:44,009 student.views INFO     URL /student/faculty_addsubmap/ calls FacultySubMapCreate() 
+2019-12-19 18:34:44,009 student.views INFO     username admin 
+2019-12-19 13:05:49,039 student.views INFO     URL /student/marklist_add/ calls MarklistCreate() 
+2019-12-19 13:05:49,040 student.views INFO     username admin 
+2019-12-19 13:06:53,837 student.views INFO     URL /student/stu_search/ calls student_search() 
+2019-12-19 13:06:53,837 student.views INFO     username admin 
+2019-12-19 13:07:18,453 student.views INFO     URL /student/subject_add/ calls Subject_ProfileCreate() 
+2019-12-19 13:07:18,453 student.views INFO     username admin 
+2019-12-19 21:43:22,013 django.request WARNING  Not Found: /student/main.css
+2019-12-19 21:43:22,125 django.request WARNING  Not Found: /favicon.ico
+2019-12-19 21:43:22,139 django.request WARNING  Not Found: /favicon.ico
+2019-12-19 16:13:42,732 student.views INFO     URL /student/login_user/ calls loguser 
+2019-12-19 16:13:42,830 student.views INFO     admin has logged in 
+2019-12-19 16:13:42,830 student.views INFO     username admin
+2019-12-19 16:13:42,847 student.views INFO     URL /student/home/ calls home() 
+2019-12-19 16:13:42,847 student.views INFO     username admin 
+2019-12-19 16:16:03,416 student.views INFO     URL /student/add/ calls StudentCreate() 
+2019-12-19 16:16:03,416 student.views INFO     username admin 
+2019-12-19 16:16:31,055 student.views INFO     URL /student/stu_search/ calls student_search() 
+2019-12-19 16:16:31,055 student.views INFO     username admin 
+2019-12-19 16:16:34,309 student.views INFO     URL /student/add/ calls StudentCreate() 
+2019-12-19 16:16:34,309 student.views INFO     username admin 
+2019-12-19 16:19:48,100 student.views INFO     URL /student/add/ calls StudentCreate() 
+2019-12-19 16:19:48,100 student.views INFO     username admin 
+2019-12-19 16:21:16,272 student.views INFO     URL /student/stu_search/ calls student_search() 
+2019-12-19 16:21:16,273 student.views INFO     username admin 
+2019-12-19 16:21:17,311 student.views INFO     URL /student/stu_search/?cursem=&join=&regno=&submit= calls student_search() 
+2019-12-19 16:21:17,311 student.views INFO     username admin 
+2019-12-19 16:21:19,488 student.views INFO     URL /student/edit/123456789/ calls StudentUpdate() 
+2019-12-19 16:21:19,493 student.views INFO     username admin 
+2019-12-19 16:23:44,974 student.views INFO     URL /student/home/ calls home() 
+2019-12-19 16:23:44,974 student.views INFO     username admin 
+2019-12-19 16:24:22,882 student.views INFO     URL /student/add/ calls StudentCreate() 
+2019-12-19 16:24:22,882 student.views INFO     username admin 
+2019-12-19 16:24:43,110 student.views INFO     URL /student/stu_search/ calls student_search() 
+2019-12-19 16:24:43,110 student.views INFO     username admin 
+2019-12-19 16:24:46,576 student.views INFO     URL /student/stu_search/?cursem=&join=&regno=&submit= calls student_search() 
+2019-12-19 16:24:46,576 student.views INFO     username admin 
+2019-12-19 16:25:07,280 student.views INFO     URL /student/add/ calls StudentCreate() 
+2019-12-19 16:25:07,280 student.views INFO     username admin 
+2019-12-19 16:25:26,211 student.views INFO     URL /student/marklist_add/ calls MarklistCreate() 
+2019-12-19 16:25:26,211 student.views INFO     username admin 
+2019-12-19 16:26:29,111 student.views INFO     URL /student/regnoroll/ calls RollnoRegnoMapAdd() 
+2019-12-19 16:26:29,124 student.views INFO     username admin 
+2019-12-20 09:07:10,869 django.request WARNING  Not Found: /student/main.css
+2019-12-20 09:07:10,997 django.request WARNING  Not Found: /favicon.ico
+2019-12-20 09:07:11,009 django.request WARNING  Not Found: /favicon.ico
+2019-12-20 09:07:16,656 student.views INFO     URL /student/login_user/ calls loguser 
+2019-12-20 09:07:16,745 student.views INFO     admin has logged in 
+2019-12-20 09:07:16,745 student.views INFO     username admin
+2019-12-20 09:07:16,760 student.views INFO     URL /student/home/ calls home() 
+2019-12-20 09:07:16,760 student.views INFO     username admin 
+2019-12-20 09:09:48,669 student.views INFO     URL /student/home/ calls home() 
+2019-12-20 09:09:48,670 student.views INFO     username admin 
+2019-12-20 09:09:52,401 student.views INFO     URL /student/add/ calls StudentCreate() 
+2019-12-20 09:09:52,401 student.views INFO     username admin 
+2019-12-20 09:11:39,588 student.views INFO     URL /student/add/ calls StudentCreate() 
+2019-12-20 09:11:39,588 student.views INFO     username admin 
+2019-12-20 09:11:43,093 student.views INFO     URL /student/stu_search/ calls student_search() 
+2019-12-20 09:11:43,093 student.views INFO     username admin 
+2019-12-20 09:11:44,225 student.views INFO     URL /student/stu_search/?cursem=&join=&regno=&submit= calls student_search() 
+2019-12-20 09:11:44,225 student.views INFO     username admin 
+2019-12-20 09:11:45,806 student.views INFO     URL /student/edit/234/ calls StudentUpdate() 
+2019-12-20 09:11:45,808 student.views INFO     username admin 
+2019-12-20 09:14:46,754 student.views INFO     URL /student/syllabus_add/ calls SyllabusCreate() 
+2019-12-20 09:14:46,754 student.views INFO     username admin 
+2019-12-20 09:16:23,015 student.views INFO     URL /student/syllabus_add/ calls SyllabusCreate() 
+2019-12-20 09:16:23,016 student.views INFO     username admin 
+2019-12-20 09:16:27,329 student.views INFO     URL /student/home/ calls home() 
+2019-12-20 09:16:27,329 student.views INFO     username admin 
+2019-12-20 09:16:38,032 student.views INFO     URL /student/add/ calls StudentCreate() 
+2019-12-20 09:16:38,032 student.views INFO     username admin 
+2019-12-20 09:19:19,969 student.views INFO     URL /student/syllabus_add/ calls SyllabusCreate() 
+2019-12-20 09:19:19,969 student.views INFO     username admin 
+2019-12-20 09:23:00,693 student.views INFO     URL /student/add/ calls StudentCreate() 
+2019-12-20 09:23:00,694 student.views INFO     username admin 
+2019-12-20 09:24:00,989 student.views INFO     URL /student/add/ calls StudentCreate() 
+2019-12-20 09:24:00,990 student.views INFO     username admin 
+2019-12-20 09:26:40,408 student.views INFO     URL /student/add/ calls StudentCreate() 
+2019-12-20 09:26:40,409 student.views INFO     username admin 
+2019-12-20 09:27:48,332 student.views INFO     URL /student/add/ calls StudentCreate() 
+2019-12-20 09:27:48,332 student.views INFO     username admin 
+2019-12-20 09:27:48,336 django.request ERROR    Internal Server Error: /student/add/
+Traceback (most recent call last):
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/db/backends/utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+psycopg2.DataError: invalid input syntax for integer: "123.123"
+LINE 1: ...lid" = NULL, "tenboard" = NULL, "tenregisterno" = '123.123',...
+                                                             ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/auth/decorators.py", line 21, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/student/views.py", line 962, in StudentCreate
+    instance.save()
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/db/models/base.py", line 729, in save
+    force_update=force_update, update_fields=update_fields)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/db/models/base.py", line 759, in save_base
+    updated = self._save_table(raw, cls, force_insert, force_update, using, update_fields)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/db/models/base.py", line 823, in _save_table
+    forced_update)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/db/models/base.py", line 872, in _do_update
+    return filtered._update(values) > 0
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/db/models/query.py", line 709, in _update
+    return query.get_compiler(self.db).execute_sql(CURSOR)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/db/models/sql/compiler.py", line 1378, in execute_sql
+    cursor = super().execute_sql(result_type)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/db/models/sql/compiler.py", line 1067, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/db/backends/utils.py", line 100, in execute
+    return super().execute(sql, params)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/db/backends/utils.py", line 68, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/db/backends/utils.py", line 77, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/db/backends/utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/db/utils.py", line 89, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/db/backends/utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+django.db.utils.DataError: invalid input syntax for integer: "123.123"
+LINE 1: ...lid" = NULL, "tenboard" = NULL, "tenregisterno" = '123.123',...
+                                                             ^
+
+2019-12-20 09:28:19,041 student.views INFO     URL /student/add/ calls StudentCreate() 
+2019-12-20 09:28:19,041 student.views INFO     username admin 
+2019-12-20 09:28:19,044 django.request ERROR    Internal Server Error: /student/add/
+Traceback (most recent call last):
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/db/backends/utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+psycopg2.DataError: invalid input syntax for integer: "12.32"
+LINE 1: ...no" = '12321', "tenmarks" = 12, "tenpercentage" = '12.32', "...
+                                                             ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/contrib/auth/decorators.py", line 21, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/jyothis/PycharmProjects/student-info/student/views.py", line 962, in StudentCreate
+    instance.save()
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/db/models/base.py", line 729, in save
+    force_update=force_update, update_fields=update_fields)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/db/models/base.py", line 759, in save_base
+    updated = self._save_table(raw, cls, force_insert, force_update, using, update_fields)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/db/models/base.py", line 823, in _save_table
+    forced_update)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/db/models/base.py", line 872, in _do_update
+    return filtered._update(values) > 0
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/db/models/query.py", line 709, in _update
+    return query.get_compiler(self.db).execute_sql(CURSOR)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/db/models/sql/compiler.py", line 1378, in execute_sql
+    cursor = super().execute_sql(result_type)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/db/models/sql/compiler.py", line 1067, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/db/backends/utils.py", line 100, in execute
+    return super().execute(sql, params)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/db/backends/utils.py", line 68, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/db/backends/utils.py", line 77, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/db/backends/utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/db/utils.py", line 89, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/jyothis/PycharmProjects/student-info/env/lib/python3.5/site-packages/django/db/backends/utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+django.db.utils.DataError: invalid input syntax for integer: "12.32"
+LINE 1: ...no" = '12321', "tenmarks" = 12, "tenpercentage" = '12.32', "...
+                                                             ^
+
+2019-12-20 09:30:34,921 student.views INFO     URL /student/add/ calls StudentCreate() 
+2019-12-20 09:30:34,921 student.views INFO     username admin 
+2019-12-20 09:30:40,414 student.views INFO     URL /student/stu_search/ calls student_search() 
+2019-12-20 09:30:40,414 student.views INFO     username admin 
+2019-12-20 09:35:57,663 student.views INFO     URL /student/stu_search/ calls student_search() 
+2019-12-20 09:35:57,663 student.views INFO     username admin 
+2019-12-20 09:36:00,643 student.views INFO     URL /student/stu_search/ calls student_search() 
+2019-12-20 09:36:00,643 student.views INFO     username admin 
+2019-12-20 09:36:03,204 student.views INFO     URL /student/add/ calls StudentCreate() 
+2019-12-20 09:36:03,205 student.views INFO     username admin 
+2019-12-20 09:36:31,935 student.views INFO     URL /student/add/ calls StudentCreate() 
+2019-12-20 09:36:31,935 student.views INFO     username admin 
+2019-12-20 09:37:36,226 student.views INFO     URL /student/faculty_add/ calls FacultyCreate() 
+2019-12-20 09:37:36,227 student.views INFO     username admin 
+2019-12-20 09:38:28,971 student.views INFO     URL /student/faculty_add/ calls FacultyCreate() 
+2019-12-20 09:38:28,972 student.views INFO     username admin 
+2019-12-20 09:38:46,169 student.views INFO     URL /student/faculty_add/ calls FacultyCreate() 
+2019-12-20 09:38:46,169 student.views INFO     username admin 
+2019-12-20 09:38:49,592 student.views INFO     URL /student/faculty_add/ calls FacultyCreate() 
+2019-12-20 09:38:49,592 student.views INFO     username admin 
+2019-12-20 09:39:01,231 student.views INFO     URL /student/faculty_add/ calls FacultyCreate() 
+2019-12-20 09:39:01,231 student.views INFO     username admin 
+2019-12-20 09:39:44,953 student.views INFO     URL /student/stu_search/ calls student_search() 
+2019-12-20 09:39:44,953 student.views INFO     username admin 
+2019-12-20 09:39:47,752 student.views INFO     URL /student/stu_search/?cursem=&join=&regno=&submit= calls student_search() 
+2019-12-20 09:39:47,752 student.views INFO     username admin 
+2019-12-20 09:39:51,026 student.views INFO     URL /student/edit/123123/ calls StudentUpdate() 
+2019-12-20 09:39:51,032 student.views INFO     username admin 
+2019-12-20 09:42:13,188 student.views INFO     URL /student/edit/123123/ calls StudentUpdate() 
+2019-12-20 09:42:13,194 student.views INFO     username admin 
+2019-12-20 09:44:41,753 student.views INFO     URL /student/edit/123123/ calls StudentUpdate() 
+2019-12-20 09:44:41,756 student.views INFO     username admin 
+2019-12-20 09:45:13,646 student.views INFO     URL /student/edit/123123/ calls StudentUpdate() 
+2019-12-20 09:45:13,649 student.views INFO     username admin 
+2019-12-20 09:45:56,359 student.views INFO     URL /student/marklist_add/ calls MarklistCreate() 
+2019-12-20 09:45:56,359 student.views INFO     username admin 
