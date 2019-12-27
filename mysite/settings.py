@@ -26,7 +26,7 @@ SECRET_KEY = '9@3-rm^!f5cq^8&768)gli%mzj=&yn#3znyavxas*=fz+v=q5g'
 #DEBUG = True
 DEBUG = True
 
-ALLOWED_HOSTS = ['172.16.12.45','10.0.31.1','127.0.0.1','10.0.0.49','soe.cusat.ac.in']
+ALLOWED_HOSTS = ['172.16.12.45','10.0.31.1','127.0.0.1','10.0.0.49','soe.cusat.ac.in','*']
 
 # Application definition
 
