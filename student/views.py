@@ -801,7 +801,7 @@ def loguser(request):
             passd = request.POST['password']
             logger.info("URL %s calls loguser ", request.get_full_path())
             print('00=============')
-            print(CustomUser.objects)
+            print(CustomUser.objects.all())
             print('112=============')
             valid_user = CustomUser.objects.filter(username=uname)
             print(valid_user)
