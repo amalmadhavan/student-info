@@ -818,11 +818,13 @@ def loguser(request):
                         else:
                             return HttpResponseRedirect('/student/home/')
             else:
+                print('3')
                 context = {'error': "Login credentials are invalid"}
                 logger.error('%s failed to login ', uname)
 
                 return render(request, 'student/login.html', context)
 
+        print('4')
         context = {'error': "Login credentials are invalid"}
 
         return render(request, 'student/login.html', context)
