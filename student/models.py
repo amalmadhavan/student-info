@@ -50,7 +50,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
             ('ME', 'Mechanical Engineering'))
 
     username_validator = UnicodeUsernameValidator()
-    # category = models.CharField(max_length=20, default='General')
+    category = models.CharField(max_length=20, default='General')
     username = models.CharField(
         max_length=150,
         unique=True,
