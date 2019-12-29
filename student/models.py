@@ -185,7 +185,7 @@ class Student(models.Model):
     tenboard = models.CharField(max_length=20, verbose_name='10th Board', null=True, blank=True)
     tenregisterno = models.CharField(max_length=20, verbose_name='10th Register No', null=True, blank=True)
     tenmarks = models.IntegerField(verbose_name='10th Marks', null=True, blank=True)
-    tenpercentage = models.DecimalField(max_digits=5, decimal_places=2, verbose_name='10th Percentage', null=True, blank=True)
+    tenpercentage = models.DecimalField(max_digits=6, decimal_places=2, verbose_name='10th Percentage', null=True, blank=True)
     tenyear = models.IntegerField(default='0')
 
     qualifyingboard = models.CharField(max_length=20, verbose_name='Qualifying Board', null=True, blank=True)
