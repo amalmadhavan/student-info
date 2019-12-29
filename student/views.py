@@ -802,6 +802,7 @@ def loguser(request):
             logger.info("URL %s calls loguser ", request.get_full_path())
             print('00=============')
             valid_user = CustomUser.objects.filter(username=uname)
+            print(valid_user)
             print('11=============')
             if valid_user:
                 print('2=============')
