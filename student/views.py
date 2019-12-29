@@ -800,8 +800,11 @@ def loguser(request):
             uname = request.POST['username']
             passd = request.POST['password']
             logger.info("URL %s calls loguser ", request.get_full_path())
+            print('0')
             valid_user = CustomUser.objects.filter(username=uname)
+            print('1')
             if valid_user:
+                print('2')
                 user = authenticate(username=uname, password=passd)
                 # user = authenticate(username=user.username, password=user.password)
                 # print("dvsdvsv ", valid_user)
