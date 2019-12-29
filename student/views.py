@@ -800,11 +800,11 @@ def loguser(request):
             uname = request.POST['username']
             passd = request.POST['password']
             logger.info("URL %s calls loguser ", request.get_full_path())
-            print('0')
+            print('00=============')
             valid_user = CustomUser.objects.filter(username=uname)
-            print('1')
+            print('11=============')
             if valid_user:
-                print('2')
+                print('2=============')
                 user = authenticate(username=uname, password=passd)
                 # user = authenticate(username=user.username, password=user.password)
                 # print("dvsdvsv ", valid_user)
@@ -818,13 +818,13 @@ def loguser(request):
                         else:
                             return HttpResponseRedirect('/student/home/')
             else:
-                print('3')
+                print('3==============')
                 context = {'error': "Login credentials are invalid"}
                 logger.error('%s failed to login ', uname)
 
                 return render(request, 'student/login.html', context)
 
-        print('4')
+        print('4=============')
         context = {'error': "Login credentials are invalid"}
 
         return render(request, 'student/login.html', context)
