@@ -358,7 +358,7 @@ class Facultymodelform(forms.ModelForm):
     dob = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
     datejoin = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
     dateresig = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
-    ename = forms.CharField(widget=forms.TextInput(attrs={'pattern': '[A-Za-z]+'}), label='Name')
+    ename = forms.CharField(widget=forms.TextInput(attrs={'pattern': '[A-Za-z ]+'}), label='Name')
 
     class Meta:
         model = Faculty
