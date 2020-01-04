@@ -329,6 +329,7 @@ def StudentCsv(request):
                         form.save()
                     else:
                         logger.error(form.errors.as_json())
+                        logger.info(data_dict['name'])
                         lst=[]
                         for i in form.errors:
                             lst.append(str((i,form.errors[i])))
