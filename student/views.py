@@ -329,10 +329,10 @@ def StudentCsv(request):
                         form.save()
                     else:
                         logger.error(form.errors.as_json())
-                        logger.info(data_dict['name'])
                         lst=[]
                         for i in form.errors:
-                            lst.append(str((i,form.errors[i])))
+                            lst.append(str((i,form.errors[i])) + ' | ' + str(data_dict['name']))
+
                         return render(request,"student/faculty_attendance_main.html",{'obj':lst})
                 except Exception as e:
                     logger.error(repr(e))
