@@ -191,7 +191,7 @@ class Student(models.Model):
     qualifyingboard = models.CharField(max_length=20, verbose_name='Qualifying Board', null=True, blank=True)
     qualifyingregisterno = models.IntegerField(verbose_name='Qualifying Register No', null=True, blank=True)
     qualifyingmarks = models.IntegerField(verbose_name='Qualifying Marks', null=True, blank=True)
-    qualifyingpercentage = models.IntegerField(verbose_name='Qualifying Percentage', null=True, blank=True)
+    qualifyingpercentage = models.DecimalField(max_digits=6, decimal_places=2, verbose_name='10th Percentage', null=True, blank=True)
     qualifyingyear = models.IntegerField(verbose_name='Qualifying Year', null=True, blank=True)
     specialreservation = models.CharField(max_length=30, verbose_name='Special Reservation', null=True, blank=True)
 
