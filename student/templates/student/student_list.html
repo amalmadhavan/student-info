@@ -134,6 +134,11 @@
                                     <td>
                                         <label style="font-size: medium;font-family:Arial">{{ user.branch }} </label>
                                     </td>
+                                    <td>
+                                        <label style="font-size: medium;font-family:Arial"><a
+                                                href="{% url 'student:delete' user.regno %}">Delete</a>
+                                        </label>
+                                    </td>
 
 
                                 </tr>
