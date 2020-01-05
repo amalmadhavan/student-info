@@ -427,7 +427,7 @@ class AttendenceCsvForm(forms.ModelForm):
     class Meta:
         model = RollnoRegnoMap
         fields = '__all__'
-        exclude = ('id', 'time', 'atotal', 'ptotal', 'ftotal')
+        exclude = ('id', 'atotal', 'ptotal', 'ftotal')
 
     def __init__(self, *args, **kwargs):
         super(AttendenceCsvForm, self).__init__(*args, **kwargs)
